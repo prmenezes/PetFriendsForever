@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from pets.views import PetView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/', PetView.as_view(), name="pet_list")
 ]
