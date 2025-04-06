@@ -19,6 +19,7 @@ The application will use
 2. Install Django
    python -m pip install django
 3. Fork the project?
+4. Rename .env.example to .env and define your own secret_key
 4. Run migrations
    python manage.py makemigrations
    python manage.py migrate
