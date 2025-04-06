@@ -21,5 +21,5 @@ from pets.views import PetView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', PetView.as_view(), name="pet_list")
+    path('', PetView.as_view(), name="pet_list")
 ]
