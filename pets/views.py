@@ -1,11 +1,11 @@
 from django.http import HttpResponse
 
 from django.shortcuts import render
-from django.views.generic.base import View
+from django.views.generic import ListView
+from pets.models.pets import Pet
 
 
 # Create your views here.
-class PetView(View):
+class PetView(ListView):
 
-    def get(self,request):
-        return HttpResponse("A list of animals")
+    model = Pet
