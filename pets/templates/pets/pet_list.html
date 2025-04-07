@@ -1,5 +1,14 @@
-{% for pet in pet_list %}
+<h1> Pets </h1>
+
+{% if pet_list %}
 <ul>
-    <li> {{ pet }} </li>
+    {% for pet in pet_list %}
+    <!--Put the below in a separate html and use include -->
+    <li><a href="{% url 'pet_details' pet.pk %}"> {{ pet }} </a></li>
+    {% endfor %}
 </ul>
-{% endfor %}
+{% else %}
+<p>No pets!</p>
+{% endif %}
+
+

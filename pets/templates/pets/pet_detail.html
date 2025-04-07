@@ -2,8 +2,11 @@
 <li> {{ pet.id}}</li>
 <li> {{ pet.name}}</li>
 
-{% for photo in pet.pet_photos.all %}
-<img src="{{ photo.image.url}}" alt="{{ photo.alternate_text }}" width="300" height="200">
 
+{% for photo in pet.pet_photos.all %}
+    {% if photo.image %}
+        <img src="{{ photo.image.url}}" alt="{{ photo.alternate_text }}" width="300" height="200">
+    {% endif %}
 {% endfor %}
+
 
