@@ -17,9 +17,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pets.views import PetView
+from pets.views import PetView, PetDetailView
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', PetView.as_view(), name="pet_list")
+    path('', PetView.as_view(), name="pet_list"),
+    path('pets/<int:pk>', PetDetailView.as_view(), name="pet_details"),
+
+
 ]
+
+# Serve media files during development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
