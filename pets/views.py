@@ -8,6 +8,16 @@ from pets.models.pets import Pet
 
 # Create your views here.
 
+class HomeView(View):
+    
+    def get(self, request):
+
+        context = {
+            "NA" : "NA"
+        }
+        return render(request, "home.html", context)
+
+# PV - see if it can be changed to TemplateView
 class PetView(View):
 
     def get(self, request, pet_type):

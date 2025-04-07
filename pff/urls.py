@@ -17,14 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pets.views import PetView, PetListView, PetDetailView
+from pets.views import PetView, PetListView, PetDetailView, HomeView
 
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', PetListView.as_view(), name="pet_list"),
+    path('', HomeView.as_view(), name="home"),
     path('pets/', PetListView.as_view(), name="pet_list"),
     path('pets/<int:pk>/', PetDetailView.as_view(), name="pet_details"),
     path('pets/<str:pet_type>/', PetView.as_view(), name="filtered_pet_list"),
