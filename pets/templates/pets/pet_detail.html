@@ -1,12 +1,32 @@
-
-<li> {{ pet.id}}</li>
-<li> {{ pet.name}}</li>
-
+{% extends "base.html" %}
+{% block title %} Pet Details {% endblock title %}
+{% block adoptable-pets-active %}active{% endblock  %}
+{% block content %}
+<h1> Meet {{pet.name}}! </h1>
 
 {% for photo in pet.pet_photos.all %}
     {% if photo.image %}
         <img src="{{ photo.image.url}}" alt="{{ photo.alternate_text }}" width="300" height="200">
     {% endif %}
 {% endfor %}
+
+<p> Pet ID: {{pet.id}}</p>
+<li> Age: {{ pet.age}}</li>
+<p> {{pet.name}} is a {{pet.description}} </p>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
