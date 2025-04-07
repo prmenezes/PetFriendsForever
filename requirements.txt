@@ -1,1 +1,2 @@
 Django >= 5.*
+pillow >= 11.1.*

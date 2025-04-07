@@ -16,8 +16,9 @@ The application will use
 **#How to run the application**
 1. Install the virtual enviroment
    python -m env .venv
-2. Install Django
+2. Install Django, Pillow
    python -m pip install django
+   python -m pip install Pillow
 3. Fork the project?
 4. Rename .env.example to .env and define your own secret_key
 4. Run migrations
