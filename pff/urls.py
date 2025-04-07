@@ -17,20 +17,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pets.views import PetView, PetDetailView
+from pets.views import PetView, PetListView, PetDetailView
 
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', PetView.as_view(), name="pet_list"),
-    path('pets/<int:pk>', PetDetailView.as_view(), name="pet_details"),
+    path('', PetListView.as_view(), name="pet_list"),
+    path('pets/', PetListView.as_view(), name="pet_list"),
+    path('pets/<int:pk>/', PetDetailView.as_view(), name="pet_details"),
+    path('pets/<str:pet_type>/', PetView.as_view(), name="filtered_pet_list"),
+
 
 
 ]
 
 # Serve media files during development
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,0 +1,12 @@
+{% if filtered_pets %}
+    {% for pet in filtered_pets %}
+    <ul>
+        <li> {{ pet.name }} </li>
+
+        <img src="{{ pet.pet_photos.first.image.url}}">
+    </ul>
+    {% endfor %}
+{% else %}
+    <p> No pets! </p>
+
+{% endif %}

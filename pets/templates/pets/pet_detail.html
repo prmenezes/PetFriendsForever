@@ -1,3 +1,9 @@
 
-<li> {{ pet_detail}} </li>
+<li> {{ pet.id}}</li>
+<li> {{ pet.name}}</li>
+
+{% for photo in pet.pet_photos.all %}
+<img src="{{ photo.image.url}}" alt="{{ photo.alternate_text }}" width="300" height="200">
+
+{% endfor %}
 

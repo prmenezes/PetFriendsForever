@@ -5,7 +5,7 @@ from pets.models import Pet, Person, Address, Appointment, IDProof, PetPhotos
 # Register your models here.
 
 class PetAdmin(admin.ModelAdmin):
-    list_display=["name", "type", "adopted_by"]
+    list_display=["id", "name", "type", "adoption_status", "adopted_by"]
 
 
 class PersonAdmin(admin.ModelAdmin):
