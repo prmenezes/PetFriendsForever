@@ -3,9 +3,15 @@ from django.db import models
 import uuid
 
 class Pet(models.Model):
+
+    pet_type_choices = {
+        "Dogs": "Dog",
+        "Cats": "Cat",
+        "Birds": "Bird"
+    }
     
     id = models.IntegerField(primary_key=True)
-    type = models.CharField(max_length=50)
+    type = models.CharField(choices=pet_type_choices)
     name = models.CharField(max_length=100)
     age = models.PositiveIntegerField()
     gender = models.CharField(max_length=20)

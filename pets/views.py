@@ -20,7 +20,7 @@ class HomeView(View):
         return render(request, "home.html", context)
 
 # PV - see if it can be changed to TemplateView
-class PetView(ListView):
+class FilteredPetView(ListView):
 
     model = Pet
     template_name = "filtered_pets.html"
@@ -30,6 +30,7 @@ class PetView(ListView):
         pet_type = self.kwargs.get("pet_type")
         if pet_type:
             context["filtered_pets_list"] = Pet.objects.filter(type__iexact=pet_type)
+            context["pet_type"] = pet_type
         else:
             context["filtered_pets_list"] = Pet.objects.all()
         return context

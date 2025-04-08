@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pets.views import PetView, PetListView, PetDetailView, HomeView
+from pets.views import FilteredPetView, PetListView, PetDetailView, HomeView
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -27,7 +27,7 @@ urlpatterns = [
     path('', HomeView.as_view(), name="home"),
     path('pets/', PetListView.as_view(), name="pet_list"),
     path('pets/<int:pk>/', PetDetailView.as_view(), name="pet_details"),
-    path('pets/<str:pet_type>/', PetView.as_view(), name="filtered_pet_list"),
+    path('pets/<str:pet_type>/', FilteredPetView.as_view(), name="filtered_pet_list"),
 
 
 

@@ -1,7 +1,17 @@
+<!-- Filtered Adoptable Pets Page -->
+
+
 {% extends "base.html" %}
-{% block title %} Pet Details {% endblock title %}
+{% block title %} Adoptable Pets - Filtered {% endblock title %}
 {% block adoptable-pets-active %}active{% endblock  %}
 {% block content %}
+
+{% if pet_type %}
+    <h1> All Available {{pet_type}} </h1>
+{% else %}
+    <h1> All Available Pets </h1>
+{% endif %}
+
 
 {% include 'pet_list_item.html' with pet_list=filtered_pets_list %}
 
