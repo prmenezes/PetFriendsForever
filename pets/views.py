@@ -5,6 +5,8 @@ from django.views import View
 from django.views.generic import ListView, DetailView
 from pets.models.pets import Pet
 
+from typing import Any
+
 
 # Create your views here.
 
@@ -18,18 +20,19 @@ class HomeView(View):
         return render(request, "home.html", context)
 
 # PV - see if it can be changed to TemplateView
-class PetView(View):
+class PetView(ListView):
 
-    def get(self, request, pet_type):
+    model = Pet
+    template_name = "filtered_pets.html"
 
-        pet_filter = Pet.objects.filter(type__iexact=pet_type)
-
-        context = {
-            "filtered_pets":pet_filter
-        }
-
-        return render(request, "filtered_pets.html", context)
-
+    def get_context_data(self, **kwargs) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        pet_type = self.kwargs.get("pet_type")
+        if pet_type:
+            context["filtered_pets_list"] = Pet.objects.filter(type__iexact=pet_type)
+        else:
+            context["filtered_pets_list"] = Pet.objects.all()
+        return context
 
 class PetListView(ListView):
 
