@@ -6,13 +6,13 @@
 
 <!-- PV - Use include here so that we have only one entry -->
 <div class = container>
-    <button type="button" class="btn btn-primary">Dog</button>
-    <a class="btn btn-primary" href="#" role="button">DOG</a>
-
-    <button type="button" class="btn btn-secondary">Cat</button>
-    <button type="button" class="btn btn-success">Bird</button>
+    <a class="btn btn-primary" href="{% url 'filtered_pet_list' 'dog'%}" role="button">Dogs</a>
+    <a class="btn btn-warning" href="{% url 'filtered_pet_list' 'cat'%}" role="button">Cats</a>
+    <a class="btn btn-danger" href="{% url 'filtered_pet_list' 'bird'%}" role="button">Birds</a>
 
 </div>
+
+
 
 {% if pet_list %}
 <ul>

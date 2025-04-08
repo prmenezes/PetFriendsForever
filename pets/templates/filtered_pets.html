@@ -7,8 +7,17 @@
     {% for pet in filtered_pets %}
     <ul>
         <li> {{ pet.name }} </li>
+        <!--PV Have a default pet pic in models?-->
+        <!-- PV: Use with for pet.pet_photos.first-->
+         <!--PV: See how to make this better maybe?-->
+        {% if pet.pet_photos.first and pet.pet_photos.first.image.url %}
+        
+        <img src="{{ pet.pet_photos.first.image.url}}" alt="{{ pet.pet_photos.first.alternate_text}}">
+        {% endif %}
+       
 
-        <img src="{{ pet.pet_photos.first.image.url}}">
+
+        
     </ul>
     {% endfor %}
 {% else %}
