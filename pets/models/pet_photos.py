@@ -6,6 +6,7 @@ class PetPhotos(models.Model):
         upload_to="pet_pics_upload",
         height_field="image_height",
         width_field="image_width",
+        default="pet_pics_upload/photo_coming_soon.png"
     )
     alternate_text = models.CharField(blank=True, max_length=50)
     display_pic = models.BooleanField(blank=True, null=True)

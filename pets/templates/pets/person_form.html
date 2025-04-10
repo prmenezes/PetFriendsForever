@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} Book An Appointment/Contact Form {% endblock title %}
+{% block visit-us-active %}active{% endblock  %}
+{% block content %}
+<h1> Contact Form</h1>
+<h5> Please fill out the form below and a staff member will be in touch within 2 business days to book an appointment for you<h5>
+
+    {% if form.is_valid %}
+        <div>
+            <p>Thank you for your interest in Pet Friends Forever. We will get in touch with you shortly!</p>
+            <!-- PV: Maybe some links to browse the pets or how to adopt page -->
+        </div>
+
+    {% else %}
+        <div>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Submit form</button>
+            </div>
+        </form>
+        </div>
+    {% endif %}
+{% endblock %}
