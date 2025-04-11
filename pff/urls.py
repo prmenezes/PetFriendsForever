@@ -18,17 +18,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from pets.views.home import HomeView
+from pets.views.pet import FilteredPetView, PetListView, PetDetailView
+from pets.views.contact_form_success import ContactFormSuccessView
+
 from pets.views.views import (
-    FilteredPetView,
-    PetListView,
-    PetDetailView,
-    HomeView,
     PersonCreateView,
     PersonListView,
     PersonDetailView,
     PersonUpdateView,
-    PersonDeleteView,
-    ContactFormSuccessView
+    PersonDeleteView
 )
 
 from django.conf import settings
