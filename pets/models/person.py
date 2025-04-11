@@ -17,7 +17,7 @@ class Person(models.Model):
     last_name = models.CharField(max_length=50)
     phone = models.IntegerField()
     email = models.EmailField(max_length=254)
-    interested_species = models.CharField(choices=species_choices)
+    interested_species = models.CharField(choices=species_choices, blank=True, null=True)
     first_time_owner = models.BooleanField()
 
     address = models.ForeignKey("Address", 
