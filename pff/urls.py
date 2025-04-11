@@ -21,8 +21,9 @@ from django.urls import path
 from pets.views.home import HomeView
 from pets.views.pet import FilteredPetView, PetListView, PetDetailView
 from pets.views.contact_form_success import ContactFormSuccessView
+from pets.views.contact_us import ContactUsView
 
-from pets.views.views import (
+from pets.views.person import (
     PersonCreateView,
     PersonListView,
     PersonDetailView,
@@ -45,6 +46,8 @@ urlpatterns = [
     path("people/edit/", PersonUpdateView.as_view(), name="update_person"),
     path("people/delete/<int:pk>", PersonDeleteView.as_view(), name="delete_person"),
     path("people/create/success", ContactFormSuccessView.as_view(), name="contact_form_success"),
+
+    path("contact_us/", ContactUsView.as_view(), name="contact_us")
 ]
 
 # Serve media files during development
