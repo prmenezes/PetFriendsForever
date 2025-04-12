@@ -22,7 +22,7 @@ class SearchPetView(ListView):
         search_query = self.request.GET.get('q')
         if search_query:
             queryset = queryset.filter(name__iexact=search_query)
-        return queryset
+            return queryset
 
 
 
