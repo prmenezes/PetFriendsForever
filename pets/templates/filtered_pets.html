@@ -1,4 +1,4 @@
-<!-- Filtered Adoptable Pets Page -->
+<!-- Adoptable Pets: All Available FILTERED_PET_TYPE page -->
 
 
 {% extends "base.html" %}
@@ -6,13 +6,15 @@
 {% block adoptable-pets-active %}active{% endblock  %}
 {% block content %}
 
+<!--If the context has a pet type-->
 {% if pet_type %}
     <h1> All Available {{pet_type}} </h1>
-{% else %}
-    <h1> All Available Pets </h1>
 {% endif %}
 
+<!-- Buttons or Links to filter by type of Pets -->
+{% include "pet_type_links.html" %}
 
+<!-- List each pet in the pet_list -->
 {% include 'pet_list_item.html' with pet_list=filtered_pets_list %}
 
 {% endblock %}

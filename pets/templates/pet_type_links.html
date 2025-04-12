@@ -1,0 +1,9 @@
+<!-- PV - Think about how to get a single entry 
+here for pet type without messing the view, I like List view clean -->
+<div class = container>
+    
+    <a class="btn btn-primary" href="{% url 'filtered_pet_list' 'Dogs'%}" role="button">Dogs</a>
+    <a class="btn btn-warning" href="{% url 'filtered_pet_list' 'Cats'%}" role="button">Cats</a>
+    <a class="btn btn-danger" href="{% url 'filtered_pet_list' 'Birds'%}" role="button">Birds</a>
+
+</div>

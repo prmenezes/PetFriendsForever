@@ -1,5 +1,4 @@
-<!-- Adoptable Pets Page -->
-
+<!-- Adoptable Pets: All Available Pets Page -->
 
 {% extends "base.html" %}
 {% block title %} Adoptable Pets {% endblock title %}
@@ -7,16 +6,10 @@
 {% block content %}
 <h1> All Available Pets </h1>
 
-<!-- PV - Think about how to get a single entry 
-here for pet type without messing the view, I like List view clean -->
-<div class = container>
-    
-    <a class="btn btn-primary" href="{% url 'filtered_pet_list' 'Dogs'%}" role="button">Dogs</a>
-    <a class="btn btn-warning" href="{% url 'filtered_pet_list' 'Cats'%}" role="button">Cats</a>
-    <a class="btn btn-danger" href="{% url 'filtered_pet_list' 'Birds'%}" role="button">Birds</a>
+<!-- Buttons or Links to filter by type of Pets -->
+{% include "pet_type_links.html" %}
 
-</div>
-
+<!-- List each pet in the pet_list -->
 {% include 'pet_list_item.html' %}
 
 {% endblock %}
