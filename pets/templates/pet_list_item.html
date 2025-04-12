@@ -2,11 +2,10 @@
 {% if pet_list %}
 <ul>
     {% for pet in pet_list %}
-    {% if pet.pet_photos.first and pet.pet_photos.first.image.url %}
-    <img src="{{ pet.pet_photos.first.image.url}}" alt="{{ pet.pet_photos.first.alternate_text}} width="1000" height="200"">
-    {% endif %}
+    <!--PV: Handle width and height-->
+    <img src="{{ pet.display_pic.url}}" alt="{{ pet.name}} width="1000" height="200"">
 
-    <li><a href="{% url 'pet_details' pet.pk %}"> {{ pet }} </a></li>
+    <li><a href="{% url 'pet_details' pet.pk %}"> {{ pet.name }} </a></li>
     {% endfor %}
 </ul>
 {% else %}

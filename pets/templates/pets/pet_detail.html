@@ -4,6 +4,8 @@
 {% block content %}
 <h1> Meet {{pet.name}}! </h1>
 
+<img src="{{ pet.display_pic.url}}" alt="{{ pet.name}}" width="300" height="200">
+
 {% for photo in pet.pet_photos.all %}
     {% if photo.image %}
         <img src="{{ photo.image.url}}" alt="{{ photo.alternate_text }}" width="300" height="200">
