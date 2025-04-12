@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %} Contact Us {% endblock title %}
+{% block contact-us-active %}active{% endblock  %}
+{% block content %}
+<div class="container" >
+  <div class="row">
+    <h3>How to Adopt</h3>
+    <div class="col">
+        <h4>Step 1: See adoptable pets </h4>
+        <h4>Step 2: Visit the pets </h4>
+        <h4>Step 3: Prepare </h4>
+    </div>
+    <div class="col">
+        {% comment %} <table class="table table-bordered border-success w-auto">
+            <tbody>
+              {% for pet_type, pet_age, fees in pet_fees.items %}
+              <tr>
+                <th scope="row">{{day}}</th>
+                <td>{{hours}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+        </table> {% endcomment %}
+     <p> A table/drop down something for pet fees </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+        <h4> Links </h4>
+        <p> Link to Contact Form </p>
+        <p> Link for Walk In </p>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+  {% endblock %}

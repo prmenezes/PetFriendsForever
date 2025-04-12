@@ -44,7 +44,7 @@
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link {% block how-to-adopt-active %}{% endblock  %}" aria-current="page" href="#">How to Adopt</a>
+                    <a class="nav-link {% block how-to-adopt-active %}{% endblock  %}" aria-current="page" href="{% url "how_to_adopt" %}">How to Adopt</a>
                   </li>
                   
                   <li class="nav-item">
@@ -52,8 +52,8 @@
                   </li>
 
                 </ul>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" role="search" method="GET" action="{% url "search" "q" %}">
+                  <input name="q" class="form-control me-2" type="search" placeholder="Search by Pet Name" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
               </div>

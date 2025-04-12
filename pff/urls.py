@@ -22,6 +22,8 @@ from pets.views.home import HomeView
 from pets.views.pet import FilteredPetView, PetListView, PetDetailView
 from pets.views.contact_form_success import ContactFormSuccessView
 from pets.views.contact_us import ContactUsView
+from pets.views.how_to_adopt import HowtoAdoptView
+from pets.views.search import SearchPetView
 
 from pets.views.person import (
     PersonCreateView,
@@ -47,7 +49,13 @@ urlpatterns = [
     path("people/delete/<int:pk>", PersonDeleteView.as_view(), name="delete_person"),
     path("people/create/success", ContactFormSuccessView.as_view(), name="contact_form_success"),
 
-    path("contact_us/", ContactUsView.as_view(), name="contact_us")
+    path("contact_us/", ContactUsView.as_view(), name="contact_us"),
+
+    path("search/<str:name>", SearchPetView.as_view(), name="search"),
+    path("how_to_adopt/", HowtoAdoptView.as_view(), name="how_to_adopt"),
+
+
+
 ]
 
 # Serve media files during development

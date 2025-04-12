@@ -1,0 +1,25 @@
+<!-- Searched Pet List -->
+
+
+{% extends "base.html" %}
+{% block title %} Pet Search {% endblock title %}
+{% block adoptable-pets-active %}active{% endblock  %}
+{% block content %}
+
+{% if pet_list %}
+    <h1> {{pet_list|length}} pet(s) named {{pet_name}} found! </h1>
+    {% include 'pet_list_item.html' with pet_list=pet_list %}
+
+{% else %}
+    <div class="container-fluid mt-3">
+        <h3> No matches found for {{pet_name}}! </h3>
+        <p> The pet may have been already adopted or does not exist.</p>
+    </div>
+{% endif %}
+
+
+{% endblock %}
+
+
+
+
