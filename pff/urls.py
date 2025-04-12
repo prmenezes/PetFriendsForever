@@ -23,7 +23,7 @@ from pets.views.pet import FilteredPetView, PetListView, PetDetailView
 from pets.views.contact_form_success import ContactFormSuccessView
 from pets.views.contact_us import ContactUsView
 from pets.views.how_to_adopt import HowtoAdoptView
-from pets.views.search import SearchPetView
+from pets.views.search_pets import SearchPetView
 
 from pets.views.person import (
     PersonCreateView,

@@ -21,7 +21,8 @@ class SearchPetView(ListView):
         queryset = super().get_queryset()
         search_query = self.request.GET.get('q')
         if search_query:
-            queryset = queryset.filter(name__iexact=search_query)
+            # Need an exclude here for any pet that has been adopted
+            queryset = queryset.filter(name__iexact=search_query).exclude(Pet.objects.exclude(adoption_status__iexact='adopted'))
             return queryset
 
 

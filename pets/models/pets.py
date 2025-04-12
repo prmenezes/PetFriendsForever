@@ -19,6 +19,11 @@ class Pet(models.Model):
     description = models.TextField()
     adoption_status = models.CharField(max_length=100)
     adopted_by = models.ForeignKey("Person", on_delete=models.SET_NULL, related_name="pets", blank=True, null=True)
+    display_pic = models.ImageField(
+        upload_to="pet_display_pics_upload",
+        default="pet_pics_upload/photo_coming_soon.png", 
+        max_length=200
+    )
 
     def __str__(self):
         return f"{self.name}"
