@@ -4,7 +4,13 @@
 {% block title %} Adoptable Pets {% endblock title %}
 {% block adoptable-pets-active %}active{% endblock  %}
 {% block content %}
-<h1> All Available Pets </h1>
+
+
+{% if pet_type %}
+    <h1> All Available {{pet_type}} </h1>
+{% else %}
+    <h1> All Available Pets </h1>
+{% endif %}
 
 <!-- Buttons or Links to filter by type of Pets -->
 {% include "pet_type_links.html" %}
