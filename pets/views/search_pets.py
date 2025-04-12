@@ -11,19 +11,26 @@ class SearchPetView(ListView):
     model = Pet
     template_name = "search.html"
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        # Search only adoptable pets
+        queryset = queryset.filter(adoption_status__iexact="adoptable")
+
+        # Get the search name
+        search_query = self.request.GET.get('q')
+        if search_query:
+            queryset = queryset.filter(name__iexact=search_query)
+        
+        return queryset
+
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["pet_name"] = self.request.GET.get('q').capitalize()
         return context
     
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        search_query = self.request.GET.get('q')
-        if search_query:
-            # Need an exclude here for any pet that has been adopted
-            queryset = queryset.filter(name__iexact=search_query).exclude(Pet.objects.exclude(adoption_status__iexact='adopted'))
-            return queryset
+    
 
 
 
