@@ -1,6 +1,23 @@
+
 {% extends "base.html" %}
-{% block title %} Home {% endblock title %}
+{% load static %}
+{% block title %} Home {% endblock %}
 {% block home-active %}active{% endblock  %}
 {% block content %}
-<h1>Hello {{user.username}} </h1>
+
+
+<div class="bg-image d-flex home-bg-img justify-content-start align-items-center">
+    <div class="row mt-5">
+        <div class="col-md-6 mt-5">
+            <div class=" text-white p-4 mt-5">
+                <h1 class="mb-3">Find your new best friend</h1>
+                <p class="lead">Every pet has a little magic to share—and every home has room for more love. 
+                    At Pet Friends Forever
+                    we're here to help you find the perfect match.
+                <p class="lead">Our easy-to-use platform lets you browse adorable pets with beautiful photos, fun facts, and all the little details that help you fall in love.
+                    Let us help you bring home more than just a pet—bring home a pet friend forever.</p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
