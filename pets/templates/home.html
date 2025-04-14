@@ -6,18 +6,43 @@
 {% block content %}
 
 
-<div class="bg-image d-flex home-bg-img justify-content-start align-items-center">
-    <div class="row mt-5">
-        <div class="col-md-6 mt-5">
-            <div class=" text-white p-4 mt-5">
-                <h1 class="mb-3">Find your new best friend</h1>
-                <p class="lead">Every pet has a little magic to share—and every home has room for more love. 
-                    At Pet Friends Forever
-                    we're here to help you find the perfect match.
-                <p class="lead">Our easy-to-use platform lets you browse adorable pets with beautiful photos, fun facts, and all the little details that help you fall in love.
-                    Let us help you bring home more than just a pet—bring home a pet friend forever.</p>
-            </div>
+<div class="bg-image d-flex home-bg-img justify-content-start align-items-end ">
+    <div class="d-flex flex-column w-100 bd-highlight ms-5 text-white">
+        <div class="p-1 mt-5">
+            <h1>A Friend to Hold</h1>
         </div>
-    </div>
+        
+        <div class="p-2 align-self-end me-5">
+            <h1>Warmth in Waiting</h1>
+        </div>
+
+        <div class="p-2 align-self-center mb-5">
+            <h1>Yours, Forevermore</h1>
+        </div>
+      </div>
 </div>
+
+
+
+<div class="d-flex flex-column bd-highlight m-5">
+    <div class="mt-1 mb-3"> 
+        <h1 class="display-4">
+            Find your next <span class="text-success">Pet Friend</span>
+        </h1>
+    </div>
+    <p class="lead">Every pet has a little magic to share—and every home has room for more love. 
+    At Pet Friends Forever we're here to help you find the perfect match.</p>
+    <p class="lead">Start your adoption journey online. 
+    Browse adorable pets with beautiful photos, fun facts, and all the little details that help you fall in love. 
+    Let us help you bring home more than just a pet—bring home a pet friend forever.</p>
+  
+    {% comment %} <button type="button" class="btn btn-success btn-lg align-self-start">Click Here to See All Adoptable Pets</button> {% endcomment %}
+    <a class="btn btn-success btn-lg align-self-start" role="button" href="{% url "pet_list" %}">See All Adoptable Pets</a>
+
+    
+</div>
+
+
+
+
 {% endblock %}
