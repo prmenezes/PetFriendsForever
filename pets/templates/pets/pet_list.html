@@ -5,16 +5,19 @@
 {% block adoptable-pets-active %}active{% endblock  %}
 {% block content %}
 
+<div class="d-sm-flex flex-column align-items-center mt-5">
+    {% if pet_type %}
+        <h1 class="fw-bold display-4 mb-3"> All Available {{pet_type}}
+         </h1>
 
-{% if pet_type %}
-    <h1> All Available {{pet_type}} </h1>
-{% else %}
-    <h1> All Available Pets </h1>
-{% endif %}
+    {% else %}
+        <h1 class="fw-bold display-4 mb-3"> All Available Pets </h1>
+    {% endif %}
 
-<!-- Buttons or Links to filter by type of Pets -->
-{% include "pet_type_links.html" %}
 
+    <!-- Buttons or Links to filter by type of Pets -->
+    {% include "pet_type_links.html" %}
+</div>
 <!-- List each pet in the pet_list -->
 {% include 'pet_list_item.html' %}
 

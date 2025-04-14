@@ -1,9 +1,41 @@
 <!-- PV - Think about how to get a single entry 
 here for pet type without messing the view, I like List view clean -->
-<div class = container>
-    
-    <a class="btn btn-primary" href="{% url 'filtered_pet_list' 'Dogs'%}" role="button">Dogs</a>
-    <a class="btn btn-warning" href="{% url 'filtered_pet_list' 'Cats'%}" role="button">Cats</a>
-    <a class="btn btn-danger" href="{% url 'filtered_pet_list' 'Birds'%}" role="button">Birds</a>
+{% comment %} <div class="d-sm-flex w-50 align-items-center justify-content-evenly px-2 fs-4 fw-bold ">
+    <p><a href="{% url "pet_list" %}" class="btn btn-outline-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">ALL ANIMALS</a></p>
+    <p><a href="{% url 'filtered_pet_list' 'Dogs'%}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">DOGS</a></p>
+    <p><a href="{% url 'filtered_pet_list' 'Cats'%}" class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">CATS</a></p>
+    <p><a href="{% url 'filtered_pet_list' 'Birds'%}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">BIRDS</a></p>
+</div> {% endcomment %}
 
+<div class="d-md-flex w-50 align-items-center justify-content-evenly fs-4 fw-bold px-2 ">
+    <p><a href="{% url "pet_list" %}" class="btn 
+        {% if not pet_type %}
+            btn-secondary
+        {% else %}
+            btn-outline-secondary
+        {% endif %}">
+        ALL ANIMALS</a></p>
+    <p><a href="{% url 'filtered_pet_list' 'Dogs'%}" class="btn 
+        {% if pet_type == 'Dogs' %}
+            btn-success
+        {% else %}
+            btn-outline-success
+        {% endif %}">
+        DOGS
+    </a></p>
+    <p><a href="{% url 'filtered_pet_list' 'Cats'%}" class="btn 
+        {% if pet_type == 'Cats' %}
+            btn-warning
+        {% else %}
+            btn-outline-warning
+        {% endif %}">
+        CATS</a></p>
+    <p><a href="{% url 'filtered_pet_list' 'Birds'%}" class="btn 
+        {% if pet_type == 'Birds' %}
+            btn-primary
+        {% else %}
+            btn-outline-primary
+        {% endif %}">
+        BIRDS</a></p>
 </div>
+

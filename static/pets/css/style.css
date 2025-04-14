@@ -2,7 +2,11 @@
     background-image: url('../images/dog-bg3.jpg');
     background-size: cover;
     background-position: center;
-    height: 80vh;
+    height: 60vh;
+  }
+
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
   }
 
 

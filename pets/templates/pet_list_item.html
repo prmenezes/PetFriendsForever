@@ -3,6 +3,11 @@
 <ul>
     {% for pet in pet_list %}
     <!--PV: Handle width and height-->
+
+
+
+
+    
     <img src="{{ pet.display_pic.url}}" alt="{{ pet.name}} width="1000" height="200"">
 
     <li><a href="{% url 'pet_details' pet.pk %}"> {{ pet.name }} </a></li>

@@ -7,6 +7,7 @@ from typing import Any
 
 class PetListView(ListView):
     model = Pet
+    
 
 # Need an exclude filter for any pet that has been adopted
     def get_queryset(self):
