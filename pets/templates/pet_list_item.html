@@ -1,18 +1,50 @@
 <!-- Listing pets i.e. their display pics and names -->
 {% if pet_list %}
-<ul>
-    {% for pet in pet_list %}
+    
     <!--PV: Handle width and height-->
 
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 mx-5 mt-3">
+        {% for pet in pet_list %}
+        <div class="col">
+
+            {% comment %} <div class="card" style="width: 18rem;"> {% endcomment %}
+            <div class="card border-warning h-100 ">
+                <!--PV: Move the style to css -->
+                <img src="{{ pet.display_pic.url}}" style="height: 200px; object-fit: cover; " alt="{{ pet.name}}">
+                {% comment %} <div class="card-body">
+                <h5 class="card-title">{{ pet.name }}</h5>
+                </div> {% endcomment %}
+                <div class="card-header">
+                    {{ pet.name }}
+                </div>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">Age: {{ pet.age }}</li>
+                <li class="list-group-item">Sex: {{ pet.gender }}</li>
+                <li class="list-group-item text-truncate" title="Breed: {{ pet.breed }}">Breed: {{ pet.breed }}</li>
+                </ul>
+                <div class="card-body text-center">
+                <a href="{% url 'pet_details' pet.pk %}" class="btn btn-primary mt-auto">Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div> 
+
+{% comment %} 
 
 
-
-    
     <img src="{{ pet.display_pic.url}}" alt="{{ pet.name}} width="1000" height="200"">
 
-    <li><a href="{% url 'pet_details' pet.pk %}"> {{ pet.name }} </a></li>
-    {% endfor %}
-</ul>
+    <li><a href="{% url 'pet_details' pet.pk %}"> {{ pet.name }} </a></li> {% endcomment %}
+  
 {% else %}
-<p>No pets!</p>
+<div class="d-flex flex-column m-5">
+<h1 class="display-4 text-warning">
+    No pets found!
+</h1>
+<p class="lead">Sorry, there are no pets of this type available right now. Please check back again later!</p>
+</div>
 {% endif %}
+
+
+
