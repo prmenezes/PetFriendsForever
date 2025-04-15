@@ -28,7 +28,14 @@
                 <li class="list-group-item text-truncate" title="Breed: {{ pet.breed }}">Breed: {{ pet.breed }}</li>
                 </ul>
                 <div class="card-body text-center">
-                <a href="{% url 'pet_details' pet.pk %}" class="btn btn-primary mt-auto">Details</a>
+                <a href="{% url 'pet_details' pet.pk %}" class="btn 
+                {% if forloop.counter|divisibleby:"2" %}
+                 btn-warning
+                {% else %}
+                btn-success 
+                {% endif %}
+                
+                px-4 mt-auto">Details</a>
                 </div>
             </div>
         </div>
