@@ -15,7 +15,8 @@ class Person(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    phone = models.IntegerField()
+    # PV: Phone number = whole number
+    phone = models.IntegerField(help_text="No special characters please")
     email = models.EmailField(max_length=254)
     interested_species = models.CharField(choices=species_choices, blank=True, null=True)
     first_time_owner = models.BooleanField()
