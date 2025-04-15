@@ -25,6 +25,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Pet ID: {{ pet.id }}</li>
                         <li class="list-group-item">Age: {{ pet.age }}</li>
+                        <li class="list-group-item">Sex: {{ pet.gender }}</li>
                         <li class="list-group-item">Breed: {{ pet.breed }}</li>
                     </ul>
                 </div>
@@ -53,12 +54,12 @@
 </div>
 
 {% comment %} <div class="d-flex justify-content-around w-50 mx-5 mt-2 mb-5 gap-5"> {% endcomment %}
-<div class="d-sm-flex w-50 align-items-center justify-content-between fs-4 text-center mx-5 mt-2 mb-5 gap-5">
-    <div class="mb-3">
-        <a class="btn btn-warning" role="button" href="{% url "create_person" %}">Fill Form to Book Appointment</a>
+<div class="d-xl-flex w-50 align-items-center justify-content-between fs-4 text-center mx-5 mt-2 mb-5 gap-5">
+    <div class="mb-3 w-100">
+        <a class="btn btn-warning w-100" role="button" href="{% url "create_person" %}">Fill Form to Book Appointment</a>
     </div>
-    <div class="mb-3">
-        <a class="btn btn-warning" role="button" href="{% url "contact_us" %}">I want to Walk-in</a>
+    <div class="mb-3  w-100">
+        <a class="btn btn-warning w-100 px-3" role="button" href="{% url "contact_us" %}">I want to Walk-in</a>
     </div>
 </div>
 
