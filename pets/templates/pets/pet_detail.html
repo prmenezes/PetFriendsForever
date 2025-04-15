@@ -7,41 +7,59 @@
 
 {% include "pet_type_links.html" %}
 
-<div class="d-flex flex-column align-items-center m-5">
-    <div class="mt-1 mb-2"> 
-        <h1 class="display-5">
-            Meet <span class="text-success">{{pet.name}}!</span>
-        </h1>
-    </div>
-</div>
-    <!--PV: Handle the image size -->
-    <div class="d-flex mx-5">
-        <img src="{{ pet.display_pic.url}}" alt="{{ pet.name}}" style="height: 200px; object-fit: cover;">
-    </div>
+<div class="row">
+    <div class="col-sm-8">
+        <div class="d-flex flex-column align-items-start mx-5">
+            <div class="mb-2"> 
+                <h1 class="display-5">
+                    Meet <span class="text-success">{{pet.name}}!</span>
+                </h1>
+            </div>
+
+            <!--PV: Handle the image size -->
+            <div class="d-flex">
+                <div class="align-self-start">
+                    <img src="{{ pet.display_pic.url}}" alt="{{ pet.name}}" style="height: 200px; object-fit: cover;">
+                </div>
+                <div class="ms-5 mt-4">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Pet ID: {{ pet.id }}</li>
+                        <li class="list-group-item">Age: {{ pet.age }}</li>
+                        <li class="list-group-item">Breed: {{ pet.breed }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
 
-<div class="d-flex ms-5">
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Pet ID: {{ pet.id }}</li>
-        <li class="list-group-item">Age: {{ pet.age }}</li>
-        <li class="list-group-item">Breed: {{ pet.breed }}</li>
-        <li class="list-group-item">Size: Not listed</li>
-    </ul>
-</div>
-<div class="row mx-5 my-3">
-    <div class="col-12 col-md-9">
-        <p> {{pet.name}} is a {{pet.description}} </p>
+        
+            
+        <div class="d-flex mx-5 my-4">
+                <p> {{pet.name}} is a {{pet.description}} </p>
+        </div>
     </div>
+    <div class="col-sm-4 pt-3">
+        <div class="d-flex flex-sm-column flex-row flex-wrap align-items-center m-5">
+            {% for photo in pet.pet_photos.all %}
+                {% if photo.image %}
+                    <div class="my-3">
+                        <img src="{{ photo.image.url}}" alt="{{ photo.alternate_text }}" style="height: 200px; object-fit: cover;">
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+<div class="d-flex justify-content-around w-50 mx-5 mt-2 mb-5 gap-5">
+    <a class="btn btn-warning" role="button" href="{% url "create_person" %}">Fill Form to Book Appointment</a>
+    <a class="btn btn-warning px-5" role="button" href="{% url "contact_us" %}">I want to Walk-in</a>
 </div>
 
 
 {% endblock %}
-{% comment %} 
-{% for photo in pet.pet_photos.all %}
-                {% if photo.image %}
-                    <img src="{{ photo.image.url}}" alt="{{ photo.alternate_text }}" width="300" height="200">
-                {% endif %}
-            {% endfor %} {% endcomment %}
+
 
 
 
