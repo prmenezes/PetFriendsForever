@@ -16,7 +16,7 @@ class Pet(models.Model):
     age = models.PositiveIntegerField()
     gender = models.CharField(max_length=20)
     breed = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(max_length=1200)
     adoption_status = models.CharField(max_length=100)
     adopted_by = models.ForeignKey("Person", on_delete=models.SET_NULL, related_name="pets", blank=True, null=True)
     display_pic = models.ImageField(

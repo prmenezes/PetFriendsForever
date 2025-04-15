@@ -5,34 +5,43 @@
 {% block adoptable-pets-active %}active{% endblock  %}
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1> Meet {{pet.name}}! </h1>
+{% include "pet_type_links.html" %}
 
-            <img src="{{ pet.display_pic.url}}" alt="{{ pet.name}}" width="300" height="200">
+<div class="d-flex flex-column align-items-center m-5">
+    <div class="mt-1 mb-2"> 
+        <h1 class="display-5">
+            Meet <span class="text-success">{{pet.name}}!</span>
+        </h1>
+    </div>
+</div>
+    <!--PV: Handle the image size -->
+    <div class="d-flex mx-5">
+        <img src="{{ pet.display_pic.url}}" alt="{{ pet.name}}" style="height: 200px; object-fit: cover;">
+    </div>
 
-            {% for photo in pet.pet_photos.all %}
-                {% if photo.image %}
-                    <img src="{{ photo.image.url}}" alt="{{ photo.alternate_text }}" width="300" height="200">
-                {% endif %}
-            {% endfor %}
 
-            <p> Pet ID: {{pet.id}} </p>
-            <li> Age: {{ pet.age}}</li>
-            <li> Breed: {{ pet.breed}}</li>
-            </br>
-            <p> {{pet.name}} is a {{pet.description}} </p>
-        </div>
-        <div class="col">
-
-            {% include "pet_type_links.html" %}
-
-        </div>
+<div class="d-flex ms-5">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Pet ID: {{ pet.id }}</li>
+        <li class="list-group-item">Age: {{ pet.age }}</li>
+        <li class="list-group-item">Breed: {{ pet.breed }}</li>
+        <li class="list-group-item">Size: Not listed</li>
+    </ul>
+</div>
+<div class="row mx-5 my-3">
+    <div class="col-12 col-md-9">
+        <p> {{pet.name}} is a {{pet.description}} </p>
     </div>
 </div>
 
+
 {% endblock %}
+{% comment %} 
+{% for photo in pet.pet_photos.all %}
+                {% if photo.image %}
+                    <img src="{{ photo.image.url}}" alt="{{ photo.alternate_text }}" width="300" height="200">
+                {% endif %}
+            {% endfor %} {% endcomment %}
 
 
 
