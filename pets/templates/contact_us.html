@@ -2,43 +2,49 @@
 {% block title %} Contact Us {% endblock title %}
 {% block contact-us-active %}active{% endblock  %}
 {% block content %}
-<div class="container" >
-  <div class="row">
-    <div class="col">
-      <h1> Contact Info </h1>
-      <h5>Hours Of Operation: </h5>
-      <table class="table table-bordered border-success w-auto">
 
-          <tbody>
-            {% for day, hours in hours_of_operation.items %}
-            <tr>
-              <th scope="row">{{day}}</th>
-              <td>{{hours}}</td>
-            </tr>
-            {% endfor %}
+<!-- PV: Can all this info go in a context? -->
 
-          </tbody>
+<div class="row m-5">
+    <div class="col-12 col-md-6 gx-4 mb-4">
+      <h1 class="display-7 text-success ms-2"> Contact Information </h1>
+      <ul class="list-group list-group-flush w-75">
+          <li class="list-group-item lead">Phone: (403)-777-7777</li>
+          <li class="list-group-item lead">Email: inquiries@pff.com</li>
+          <li class="list-group-item lead">Location: 567 Somestreet SE, Calgary, AB, T3K 8V5</li>
+      </ul>
+      <div class="container w-75 ms-0">
+      <h1 class="display-7 text-warning mt-4"> Hours of Operation</h1>
+      <table class="table">
+
+        <tbody>
+          {% for day, hours in hours_of_operation.items %}
+          <tr class="lead">
+            <th scope="row" class="text-dark">{{day}}</th>
+            <td>{{hours}}</td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
       </table>
-
-      <p> Phone: (403)-777-7777</p>
-      <p> Email: inquiries@pff.com</p>
-      <p> We are located at: 567 Somestreet SE, Calgary, AB, T3K 8V5</p>
     </div>
-    <div class="col">
-      <h1> Walk In Info </h1>
-      <p>We have only these many slots during the day for a visit. 
-        While booking an appointment guarantees that you be seen at the booked slot, walk-ins may have a wait times. 
-        Our available pets change on a daily basis. 
-        Please see if the pet you see is available on the day of your visit to avoid disappointment.
+    </div>
+
+
+    <div class="col-12 col-md-6 mb-4">
+      <h1 class="display-7 text-success"> Walk-In Information </h1>
+      <p class="lead">We have only these many slots during the day for a visit. 
+        While booking an appointment guarantees that you be seen at the booked slot, walk-ins may have a wait times. Kindly bring a valid ID Proof along during your visit.</p>
+      <p class="lead">Our available pets change on a daily basis. 
+        If you want have a specific pet in mind, we request you to check if it is available on the day of your visit to avoid disappointment.
       </p>
 
-      <p>If you rather book an appointment, please fill the 
+      <p class="lead">If you'd prefer to book an appointment, please fill the 
         <a href="{% url "create_person" %}"> Contact Form For Booking An Appointment </a>
          and a staff member will be in touch within 2 business days or call us at (403)-777-7777.
       </p>
     </div>
   </div>
-</div>
     
 
 
