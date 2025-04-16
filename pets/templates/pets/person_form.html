@@ -15,11 +15,9 @@
         <!-- PV: Maybe some links to browse the pets or how to adopt page -->
     </div>
 {% else %}
-        
-
 
 <div class="container">
-    <form method="POST">
+    <form method="POST" novalidate>
         {% csrf_token %}
         <div class="container ">
             <!-- Name and Phone -->
@@ -49,7 +47,7 @@
                 <div class="row justify-content-md-start">
                     <div class="col-md-4 mb-3">
                         <label for="{{ form.phone.id_for_label }}">Phone Number</label>
-                        <input name="{{ form.phone.html_name }}" type="text" class="form-control" id="{{ form.phone.id_for_label }}">
+                        <input name="{{ form.phone.html_name }}" type="text" class="form-control" id="{{ form.phone.id_for_label }}" placeholder="Example: 555 555 5555">
                         <div id="phone_help" class="form-text">{{ form.phone.help_text }}</div>
 
                         {% for error in form.phone.errors %}
@@ -62,7 +60,7 @@
             <div class="row justify-content-md-start">
                 <div class="col-md-4 mb-3">
                     <label for="{{ form.email.id_for_label }}" class="form-label">Email address</label>
-                    <input name="{{ form.email.html_name }}" type="email" class="form-control" id="{{ form.email.id_for_label }}" placeholder="john.doe@gmail.com">
+                    <input name="{{ form.email.html_name }}" type="email" class="form-control" id="{{ form.email.id_for_label }}" placeholder="Example: john.doe@gmail.com">
                     <div id="emailHelp" class="form-text">{{ form.email.help_text }}</div>
 
                     {% for error in form.email.errors %}
