@@ -16,10 +16,10 @@ class Person(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     # PV: Phone number = whole number
-    phone = models.IntegerField(help_text="No special characters please")
+    phone = models.IntegerField(help_text="Digits only")
     email = models.EmailField(max_length=254)
     interested_species = models.CharField(choices=species_choices, blank=True, null=True)
-    first_time_owner = models.BooleanField()
+    first_time_owner = models.BooleanField(help_text="Please check this box if this will be your first pet")
 
     address = models.ForeignKey("Address", 
                                 on_delete=models.SET_NULL, 

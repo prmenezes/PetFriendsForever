@@ -4,8 +4,8 @@
 {% block content %}
 
 <div class="container-fluid py-4 text-start ms-xl-5 ms-2">
-    <h2 class="display4">Contact form</h2>
-    <p class="lead">Please fill out the form below and a staff member will be in touch within 2 business days to book an appointment for you.</p>
+    <h2 class="display-5 text-success ms-4">Contact form</h2>
+    <p class="lead ms-4">Please fill out the form below and a staff member will be in touch within 2 business days to book an appointment for you.</p>
 </div>
 
 {% if form.is_valid %}
@@ -18,16 +18,17 @@
         
 
 
-<div>
+<div class="container">
     <form method="POST">
         {% csrf_token %}
         <div class="container ">
             <!-- Name and Phone -->
-            <div class="row row-cols-2 justify-content-md-start">
+            <div class="row justify-content-md-start">
+            
                 <!-- First Name -->
                 <div class="col-md-4 mb-3">
                     <label for="{{ form.first_name.id_for_label }}">First Name</label>
-                    <input name="{{ form.first_name.html_name }}" type="text" class="form-control" id="{{ form.first_name.id_for_label }}" placeholder="First Name">
+                    <input name="{{ form.first_name.html_name }}" type="text" class="form-control" id="{{ form.first_name.id_for_label }}">
                     <div id="first_name_help" class="form-text">{{ form.first_name.help_text }}</div>
 
                     {% for error in form.first_name.errors %}
@@ -37,7 +38,7 @@
                 <!-- Last Name -->
                 <div class="col-md-4 mb-3">
                     <label for="{{ form.last_name.id_for_label }}">Last Name</label>
-                    <input name="{{ form.last_name.html_name }}" type="text" class="form-control" id="{{ form.last_name.id_for_label }}" placeholder="Last Name">
+                    <input name="{{ form.last_name.html_name }}" type="text" class="form-control" id="{{ form.last_name.id_for_label }}" >
                     <div id="last_name_help" class="form-text">{{ form.last_name.help_text }}</div>
 
                     {% for error in form.last_name.errors %}
@@ -45,19 +46,21 @@
                     {% endfor %}
                 </div>
                 <!-- Phone -->
-                <div class="col-md-6 mb-3">
-                    <label for="{{ form.phone.id_for_label }}">Phone Number</label>
-                    <input name="{{ form.phone.html_name }}" type="text" class="form-control" id="{{ form.phone.id_for_label }}" placeholder="Phone Number">
-                    <div id="phone_help" class="form-text">{{ form.phone.help_text }}</div>
+                <div class="row justify-content-md-start">
+                    <div class="col-md-4 mb-3">
+                        <label for="{{ form.phone.id_for_label }}">Phone Number</label>
+                        <input name="{{ form.phone.html_name }}" type="text" class="form-control" id="{{ form.phone.id_for_label }}">
+                        <div id="phone_help" class="form-text">{{ form.phone.help_text }}</div>
 
-                    {% for error in form.phone.errors %}
-                        <div class="form-error text-danger">{{error}}</div>
-                    {% endfor %}
+                        {% for error in form.phone.errors %}
+                            <div class="form-error text-danger">{{error}}</div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
             <!-- Email -->
             <div class="row justify-content-md-start">
-                <div class="col-md-6 mb-3">
+                <div class="col-md-4 mb-3">
                     <label for="{{ form.email.id_for_label }}" class="form-label">Email address</label>
                     <input name="{{ form.email.html_name }}" type="email" class="form-control" id="{{ form.email.id_for_label }}" placeholder="john.doe@gmail.com">
                     <div id="emailHelp" class="form-text">{{ form.email.help_text }}</div>
@@ -78,7 +81,15 @@
                         {% endfor %}
                     </select>
                 </div>      
-        </div>
+            </div>
+            <!-- First time owner -->
+            <div class="row justify-content-md-start checkbox-row">
+                <div class="col mb-3">  
+                    <input type="checkbox" name="{{ form.first_time_owner.html_name }}" id="{{ form.first_time_owner.id_for_label }}">
+                    <label class="vCheckboxLabel" for="{{ form.first_time_owner.id_for_label }}">First time pet owner</label>
+                    <div id="first_time_owner_help" class="form-text">{{ form.first_time_owner.help_text }}</div>
+                </div>
+            </div>
           
 
 
@@ -91,7 +102,7 @@
 
             <!-- Submit Contact Form -->
             <div class="col-12">
-                <button class="btn btn-primary" type="submit">Submit form</button>
+                <button class="btn btn-warning" type="submit">Submit form</button>
             </div>
         </div>
     </form>
