@@ -2,38 +2,135 @@
 {% block title %} Contact Us {% endblock %}
 {% block contact-us-active %}active{% endblock  %}
 {% block content %}
-<div class="container" >
-  <div class="row">
-    <h3>How to Adopt</h3>
-    <div class="col">
-        <h4>Step 1: See adoptable pets </h4>
-        <h4>Step 2: Visit the pets </h4>
-        <h4>Step 3: Prepare </h4>
+
+
+<div class="d-flex flex-column mb-3 ms-5 w-75">
+  <!-- How to Adopt -->
+  <div class="container mt-5" >
+    <h1 class="display-7 text-success">How to Adopt</h1>
+  </div>
+  <!-- Accordion steps -->
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+          <div class="lead">Step 1: See adoptable pets</div>
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body lead">All of our pet friends are available for viewing online. Please read the detailed description to determine if it is a fit for your lifestyle.</div>
+        <div class="container">    
+            <a class="btn btn-warning align-self-start mb-3" role="button" href="{% url "pet_list" %}">See All Adoptable Pets</a>
+        </div>
+      </div>
     </div>
-    <div class="col">
-        {% comment %} <table class="table table-bordered border-success w-auto">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+          <div class="lead">Step 2: Visit the Pets</div> 
+        </button>
+      </h2>
+      <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body lead">Click the below buttons to either fill the contact form for booking an appointment or check walk-in information. Scheduled appointments will be given priority over walk-ins. We serve on a first come first adopt basis.</div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+          <div class="lead">Step 3: Prepare</div> 
+        </button>
+      </h2>
+      <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body lead">We try to help adopters to be the best pet owner through conversation, education and post adoption support. 
+          We encourage you to research on the care of the species you are considering adopting and the expense of owning them. 
+          Also, please see the fee structure below to get an idea of the cost of adoption.</div>
+      </div>
+    </div>
+  </div>
+  <!-- Contact Form and Walk-In buttons -->
+  <div class="d-xl-flex w-50 align-items-center justify-content-between fs-4 text-center mt-3 mb-5 gap-5">
+    <div class="mb-3 w-100">
+        <a class="btn btn-warning w-100" role="button" href="{% url "create_person" %}">Fill Form to Book Appointment</a>
+    </div>
+    <div class="mb-3  w-100">
+        <a class="btn btn-warning w-100 px-3" role="button" href="{% url "contact_us" %}">I want to Walk-in</a>
+    </div>
+  </div>
+
+  <!-- Fees -->
+  <div class="container mt-3" >
+    <h1 class="display-7 text-success">Adoption Fees</h1>
+  </div>
+  <!-- Fee Structure -->
+  <div class="accordion accordion-flush" id="accordionFlushFees">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseDogs" aria-expanded="false" aria-controls="flush-collapseOne">
+          <div class="lead">Dogs</div>
+        </button>
+      </h2>
+      <div id="flush-collapseDogs" class="accordion-collapse collapse" data-bs-parent="#accordionFlushFees">
+        <div class="accordion-body lead">
+          <!--PV: Get from some model? -->
+          {% comment %} <table class="table">
             <tbody>
-              {% for pet_type, pet_age, fees in pet_fees.items %}
-              <tr>
-                <th scope="row">{{day}}</th>
+              {% for day, hours in hours_of_operation.items %}
+              <tr class="lead">
+                <th scope="row" class="text-dark">{{day}}</th>
                 <td>{{hours}}</td>
               </tr>
               {% endfor %}
             </tbody>
-        </table> {% endcomment %}
-     <p> A table/drop down something for pet fees </p>
+          </table> {% endcomment %}
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-        <h4> Links </h4>
-        <p> Link to Contact Form </p>
-        <p> Link for Walk In </p>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseCats" aria-expanded="false" aria-controls="flush-collapseTwo">
+          <div class="lead">Cats</div> 
+        </button>
+      </h2>
+      <div id="flush-collapseCats" class="accordion-collapse collapse" data-bs-parent="#accordionFlushFees">
+        <div class="accordion-body lead">
+           <!--PV: Get from some model? -->
+           {% comment %} <table class="table">
+            <tbody>
+              {% for day, hours in hours_of_operation.items %}
+              <tr class="lead">
+                <th scope="row" class="text-dark">{{day}}</th>
+                <td>{{hours}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table> {% endcomment %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseBirds" aria-expanded="false" aria-controls="flush-collapseThree">
+          <div class="lead">Birds</div> 
+        </button>
+      </h2>
+      <div id="flush-collapseBirds" class="accordion-collapse collapse" data-bs-parent="#accordionFlushFees">
+        <div class="accordion-body lead">
+          <!--PV: Get from some model? -->
+          {% comment %} <table class="table">
+          <tbody>
+            {% for day, hours in hours_of_operation.items %}
+            <tr class="lead">
+              <th scope="row" class="text-dark">{{day}}</th>
+              <td>{{hours}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table> {% endcomment %}
+      </div>
+      </div>
     </div>
   </div>
 </div>
-
-    
 
 
 
