@@ -11,8 +11,10 @@ class PetAdmin(admin.ModelAdmin):
 class PersonAdmin(admin.ModelAdmin):
     list_display=["first_name", "last_name", "email", "appointment", "get_id_type" ]
 
+    #Since id is FK
     def get_id_type(self, obj):
         return obj.id_proof.id_type if obj.id_proof else "—"
+    
     get_id_type.short_description = "ID Type"
 
 class AddressAdmin(admin.ModelAdmin):
