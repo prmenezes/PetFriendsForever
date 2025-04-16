@@ -63,72 +63,9 @@
   </div>
   <!-- Fee Structure -->
   <div class="accordion accordion-flush" id="accordionFlushFees">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseDogs" aria-expanded="false" aria-controls="flush-collapseOne">
-          <div class="lead">Dogs</div>
-        </button>
-      </h2>
-      <div id="flush-collapseDogs" class="accordion-collapse collapse" data-bs-parent="#accordionFlushFees">
-        <div class="accordion-body lead">
-          <!--PV: Get from some model? -->
-          {% comment %} <table class="table">
-            <tbody>
-              {% for day, hours in hours_of_operation.items %}
-              <tr class="lead">
-                <th scope="row" class="text-dark">{{day}}</th>
-                <td>{{hours}}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table> {% endcomment %}
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseCats" aria-expanded="false" aria-controls="flush-collapseTwo">
-          <div class="lead">Cats</div> 
-        </button>
-      </h2>
-      <div id="flush-collapseCats" class="accordion-collapse collapse" data-bs-parent="#accordionFlushFees">
-        <div class="accordion-body lead">
-           <!--PV: Get from some model? -->
-           {% comment %} <table class="table">
-            <tbody>
-              {% for day, hours in hours_of_operation.items %}
-              <tr class="lead">
-                <th scope="row" class="text-dark">{{day}}</th>
-                <td>{{hours}}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table> {% endcomment %}
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseBirds" aria-expanded="false" aria-controls="flush-collapseThree">
-          <div class="lead">Birds</div> 
-        </button>
-      </h2>
-      <div id="flush-collapseBirds" class="accordion-collapse collapse" data-bs-parent="#accordionFlushFees">
-        <div class="accordion-body lead">
-          <!--PV: Get from some model? -->
-          {% comment %} <table class="table">
-          <tbody>
-            {% for day, hours in hours_of_operation.items %}
-            <tr class="lead">
-              <th scope="row" class="text-dark">{{day}}</th>
-              <td>{{hours}}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table> {% endcomment %}
-      </div>
-      </div>
-    </div>
+    {% include "list_individual_pet_fees.html" with pet_fees=dog_fees %}
+    {% include "list_individual_pet_fees.html" with pet_fees=cat_fees %}
+    {% include "list_individual_pet_fees.html" with pet_fees=bird_fees %}
   </div>
 </div>
 

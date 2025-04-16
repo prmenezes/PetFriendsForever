@@ -25,6 +25,8 @@ from pets.views.contact_us import ContactUsView
 from pets.views.how_to_adopt import HowtoAdoptView
 from pets.views.search_pets import SearchPetView
 
+from fees.views import FeesView
+
 from pets.views.person import (
     PersonCreateView,
     PersonListView,
@@ -52,7 +54,7 @@ urlpatterns = [
     path("contact_us/", ContactUsView.as_view(), name="contact_us"),
 
     path("search/<str:name>", SearchPetView.as_view(), name="search"),
-    path("how_to_adopt/", HowtoAdoptView.as_view(), name="how_to_adopt"),
+    path("how_to_adopt/", FeesView.as_view(), name="how_to_adopt"),
 
 
 

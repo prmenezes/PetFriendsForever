@@ -1,0 +1,25 @@
+           
+<!-- Dog fees -->
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{pet_fees.0.type|title}}" aria-expanded="false" aria-controls="flush-collapseOne">
+      <div class="lead">{{pet_fees.0.type|title}}</div>
+    </button>
+  </h2>
+  <div id="flush-collapse{{pet_fees.0.type|title}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushFees">
+    <div class="accordion-body lead">
+      <table class="table">
+        <tbody>
+          {% for fees in pet_fees %}
+            {% if fees.fees %}
+            <tr>
+              <td scope="row" class="text-success">{{fees.age_category}}</td>
+              <td class=" text-success fw-bold">{{fees.fees}} CAD</td>
+            </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table> 
+    </div>
+  </div>
+</div>

@@ -5,9 +5,9 @@ from django.db import models
 class PetFee(models.Model):
 
     pet_type_choices = {
-        "Dogs": "Dog",
-        "Cats": "Cat",
-        "Birds": "Bird"
+        "dog": "Dog",
+        "cat": "Cat",
+        "bird": "Bird"
     }
 
     type = models.CharField(choices=pet_type_choices, max_length=50)
