@@ -1,4 +1,5 @@
 <!-- Listing pets i.e. their display pics and names -->
+{% load static %}
 {% if pet_list %}
     
     <!--PV: Handle width and height-->
@@ -15,7 +16,7 @@
             {% endif %}
 
                 <!--PV: Move the style to css -->
-                <img src="{{ pet.display_pic.url}}" style="height: 200px; object-fit: cover;" alt="{{ pet.name}}">
+                <img src="{{ pet.display_pic.url}}" class="img-size" alt="{{ pet.name}}">
                 {% comment %} <div class="card-body">
                 <h5 class="card-title">{{ pet.name }}</h5>
                 </div> {% endcomment %}
