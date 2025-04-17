@@ -21,11 +21,12 @@ from django.urls import path
 from pets.views.home import HomeView
 from pets.views.pet import PetListView, PetDetailView
 from pets.views.contact_form_success import ContactFormSuccessView
-from pets.views.contact_us import ContactUsView
 from pets.views.how_to_adopt import HowtoAdoptView
 from pets.views.search_pets import SearchPetView
 
 from fees.views import FeesView
+
+from contact_us.views import ContactUsView
 
 from pets.views.person import (
     PersonCreateView,

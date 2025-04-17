@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pets',
     'fees',
+    'contact_us',
     
 ]
 
