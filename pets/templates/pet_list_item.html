@@ -2,8 +2,6 @@
 {% load static %}
 {% if pet_list %}
     
-    <!--PV: Handle width and height-->
-
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5 mx-5 mb-5">
         {% for pet in pet_list %}
         <div class="col">
@@ -15,11 +13,8 @@
             <div class="card border-success-subtle h-100 ">
             {% endif %}
 
-                <!--PV: Move the style to css -->
                 <img src="{{ pet.display_pic.url}}" class="img-size" alt="{{ pet.name}}">
-                {% comment %} <div class="card-body">
-                <h5 class="card-title">{{ pet.name }}</h5>
-                </div> {% endcomment %}
+
                 <div class="card-header">
                     {{ pet.name }}
                 </div>

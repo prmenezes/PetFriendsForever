@@ -16,10 +16,9 @@
                 </h1>
             </div>
 
-            <!--PV: Handle the image size -->
             <div class="d-flex">
                 <div class="align-self-start">
-                    <img src="{{ pet.display_pic.url}}" alt="{{ pet.name}}" style="height: 200px; object-fit: cover;">
+                    <img src="{{ pet.display_pic.url}}" alt="{{ pet.name}}" class="img-size">
                 </div>
                 <div class="ms-5 mt-4">
                     <ul class="list-group list-group-flush">
@@ -50,15 +49,9 @@
 
 </div>
 
-{% comment %} <div class="d-flex justify-content-around w-50 mx-5 mt-2 mb-5 gap-5"> {% endcomment %}
-<!-- PV: Use include for the below sectio in how to adopt -->
+<!-- Fill form to book appointment and Walk-In buttons-->
 <div class="d-xl-flex w-50 align-items-center justify-content-between fs-4 text-center mx-5 mt-3 mb-5 gap-5">
-    <div class="mb-3 w-100">
-        <a class="btn btn-warning w-100" role="button" href="{% url "create_person" %}">Fill Form to Book Appointment</a>
-    </div>
-    <div class="mb-3  w-100">
-        <a class="btn btn-warning w-100 px-3" role="button" href="{% url "contact_us" %}">I want to Walk-in</a>
-    </div>
+    {% include "fill_form_walk_in_buttons.html" %}
 </div>
 
 
