@@ -1,3 +1,4 @@
+from django.utils.timezone import localtime 
 from django.db import models
 from datetime import timedelta
 
@@ -11,10 +12,22 @@ class Appointment(models.Model):
     }
 
     appointment_date = models.DateTimeField(blank=True, null=True)
-    appointment_duration = models.DurationField(default=(timedelta(hours=1)))
-    reason = models.CharField(blank=True, null=True, choices=appointment_reason_choices)
+    appointment_duration = models.DurationField(default=timedelta(hours=1))
+    reason = models.CharField(default="other", blank=True, null=True, choices=appointment_reason_choices)
 
 
     def __str__(self):
-        return f"Appointment time - {self.appointment_date}"
+        if self.appointment_date:
+            local_dt = localtime(self.appointment_date)
+            return f"{local_dt.strftime('%d-%b-%Y %I%p')}"
+        return "Appointment (unscheduled)"
+
+
+             
+
+
+
+    
+     
+
 

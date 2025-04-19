@@ -1,10 +1,12 @@
+from typing import Any
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView
 from pets.models.person import Person
 from pets.models.appointment import Appointment
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+#from pets.forms import AppointmentForm
 
 from django.utils import timezone
 
@@ -24,11 +26,39 @@ class PersonCreateView(CreateView):
         "appointment"
     ]
 
+    #PV: Delete this - get the form and use queryset to filter the appointment 
     def get_form(self, form_class = None):
         form = super().get_form(form_class)
         # Only show future appointment objects + appointment not booked by other person using related name
         form.fields["appointment"].queryset = Appointment.objects.filter(appointment_date__gt=timezone.now()).filter(people_at_this_appointment__isnull=True)
         return form
+
+    # def get_context_data(self, **kwargs) -> dict[str, Any]:
+    #     context = super().get_context_data(**kwargs)
+    #     if self.request.POST:
+    #         context['appointment_form'] = AppointmentForm(self.request.POST)
+    #     else:
+    #          # empty form
+    #          context['appointment_form'] = AppointmentForm()
+    #     return context
+    
+    # def form_valid(self, form):
+
+    #     context = self.get_context_data()
+    #     appointment_form = context['appointment_form']
+
+    #     if appointment_form.is_valid():
+    #         person = form.save(commit=False)
+    #         selected_appointment = form.cleaned_data['appointment']
+    #         # Update appointment reason
+    #         #selected_appointment.reason = appointment_form.cleaned_data['reason']
+    #         selected_appointment.save()
+
+    #         person.save()
+    #         return redirect(person.get_absolute_url())
+    #     else:
+    #         return self.form_invalid(form)
+
 
 class PersonListView(ListView):
     model = Person
