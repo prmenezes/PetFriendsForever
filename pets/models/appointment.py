@@ -11,7 +11,7 @@ class Appointment(models.Model):
         "other": "Other"
     }
 
-    appointment_date = models.DateTimeField(blank=True, null=True)
+    appointment_date = models.DateTimeField()
     appointment_duration = models.DurationField(default=timedelta(hours=1))
     reason = models.CharField(default="other", blank=True, null=True, choices=appointment_reason_choices)
 

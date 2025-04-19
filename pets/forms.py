@@ -1,26 +1,33 @@
 from django import forms
-from pets.models import Appointment
+from django.utils import timezone
 
-# class PersonForm(forms.ModelForm):
-    
-#     class Meta:
-#         model = Person
-#         fields = ["first_name", "", "", "", ]
+from pets.models import Appointment, Person
 
-# class AddressForm(forms.ModelForm):
-    
-#     class Meta:
-#         model = Address
-#         fields = ['street', 'uni_number', 'city','province','postal_code','country']
+class PersonForm(forms.ModelForm):
+    class Meta:
+        model = Person
+        fields = [
+            "first_name",
+            "last_name",
+            "phone",
+            "email",
+            "interested_species",
+            "first_time_owner",
+            "appointment"
+        ]
 
-# class AppointmentForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Filter available appointments
+        self.fields["appointment"].queryset = Appointment.objects.filter(
+            appointment_date__gt=timezone.now(),
+            people_at_this_appointment__isnull=True
+        )
+        self.fields["appointment"].empty_label = "Select an appointment"
 
-#     class Meta:
-#         model = Appointment
-#         # Not having duration as a filed as it is defaulted to 1 hour and should be only changed by admin
-#         fields = ["reason"]
-#         # widgets = {
-#         #     'appointment_date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
-#         # }
-        
+    def clean_appointment(self):
+        appointment = self.cleaned_data.get("appointment")
+        if not appointment:
+            raise forms.ValidationError("Please select an appointment.")
+        return appointment
 

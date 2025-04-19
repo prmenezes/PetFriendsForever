@@ -5,15 +5,15 @@
 
 <div class="container-fluid py-4 text-start ms-xl-5 ms-2">
     <h2 class="display-7 text-success ms-4">Contact form</h2>
-    <p class="lead ms-4">Please fill out the form below and a staff member will be in touch within 1 business day to book an appointment for you.</p>
+    <p class="lead ms-4">Please fill out the form below to book an appointment or contact us via phone or email and we will be happy to help you.</p>
 </div>
 
-{% if form.is_valid %}
+{% comment %} {% if form.is_valid %}
     <div class="py-5 text-center">
         <h2>Form submitted</h2>
-        <p class="lead">Thank you for your interest in Pet Friends Forever. We will get in touch with you shortly!</p>
+        <p class="lead">Thank you for your interest in Pet Friends Forever.</p>
     </div>
-{% else %}
+{% else %} {% endcomment %}
 
 <div class="container">
     <form method="POST" novalidate>
@@ -25,7 +25,7 @@
                 <!-- First Name -->
                 <div class="col-md-4 mb-3">
                     <label for="{{ form.first_name.id_for_label }}">First Name</label>
-                    <input name="{{ form.first_name.html_name }}" type="text" class="form-control" id="{{ form.first_name.id_for_label }}">
+                    <input name="{{ form.first_name.html_name }}" type="text" class="form-control" id="{{ form.first_name.id_for_label }}" value="{{form.first_name.value|default_if_none:''}}">
                     <div id="first_name_help" class="form-text">{{ form.first_name.help_text }}</div>
 
                     {% for error in form.first_name.errors %}
@@ -35,7 +35,7 @@
                 <!-- Last Name -->
                 <div class="col-md-4 mb-3">
                     <label for="{{ form.last_name.id_for_label }}">Last Name</label>
-                    <input name="{{ form.last_name.html_name }}" type="text" class="form-control" id="{{ form.last_name.id_for_label }}" >
+                    <input name="{{ form.last_name.html_name }}" type="text" class="form-control" id="{{ form.last_name.id_for_label }}" value="{{ form.last_name.value|default_if_none:''}}">
                     <div id="last_name_help" class="form-text">{{ form.last_name.help_text }}</div>
 
                     {% for error in form.last_name.errors %}
@@ -46,7 +46,7 @@
                 <div class="row justify-content-md-start">
                     <div class="col-md-4 mb-3">
                         <label for="{{ form.phone.id_for_label }}">Phone Number</label>
-                        <input name="{{ form.phone.html_name }}" type="text" class="form-control" id="{{ form.phone.id_for_label }}" placeholder="Example: 555 555 5555">
+                        <input name="{{ form.phone.html_name }}" type="text" class="form-control" id="{{ form.phone.id_for_label }}" placeholder="Example: 555 555 5555"  value="{{ form.phone.value|default_if_none:''}}">
                         <div id="phone_help" class="form-text">{{ form.phone.help_text }}</div>
 
                         {% for error in form.phone.errors %}
@@ -59,7 +59,7 @@
             <div class="row justify-content-md-start">
                 <div class="col-md-4 mb-3">
                     <label for="{{ form.email.id_for_label }}" class="form-label">Email address</label>
-                    <input name="{{ form.email.html_name }}" type="email" class="form-control" id="{{ form.email.id_for_label }}" placeholder="Example: john.doe@gmail.com">
+                    <input name="{{ form.email.html_name }}" type="email" class="form-control" id="{{ form.email.id_for_label }}" placeholder="Example: john.doe@gmail.com" value="{{ form.email.value|default_if_none:''}}" >
                     <div id="emailHelp" class="form-text">{{ form.email.help_text }}</div>
 
                     {% for error in form.email.errors %}
@@ -71,10 +71,11 @@
             <!-- Interested species -->
             <div class="row justify-content-md-start">
                 <div class="col-2 mb-3">              
-                    <label for="{{ form.interested_species.html_name }}" class="form-label">Interested species</label>
-                    <select name="{{ form.interested_species.html_name }}" class="form-select" id="{{ form.interested_species.html_name }}">
+                    <label for="{{ form.interested_species.id_for_label }}" class="form-label">Interested species</label>
+                    <select name="{{ form.interested_species.html_name }}" class="form-select" id="{{ form.interested_species.id_for_label }}">
                         {% for value, label in form.interested_species.field.choices %}
-                            <option value="{{value}}">{{label}}</option>
+                            <option value="{{ value }}" {% if value == form.interested_species.value %}selected{% endif %}>{{ label }}</option>
+
                         {% endfor %}
                     </select>
                 </div>      
@@ -83,25 +84,31 @@
             <div class="row justify-content-md-start checkbox-row">
                 <div class="col mb-3">  
                     <input type="checkbox" name="{{ form.first_time_owner.html_name }}" id="{{ form.first_time_owner.id_for_label }}">
+                    {% if form.first_time_owner.value == 'on' %}checked{% endif %}
                     <label class="vCheckboxLabel" for="{{ form.first_time_owner.id_for_label }}">First time pet owner</label>
                     <div id="first_time_owner_help" class="form-text">{{ form.first_time_owner.help_text }}</div>
                 </div>
             </div>
-            <!-- Appointment -->
-            <div class="row justify-content-md-start checkbox-row">
-                <div class="col mb-3">  
-                    {{form.appointment}}
+            <!-- IAppointment -->
+            <div class="row justify-content-md-start">
+                <div class="col-2 mb-3">              
+                    <label for="{{ form.appointment.id_for_label }}" class="form-label">Book Appointment</label>
+                    <select name="{{ form.appointment.html_name }}" class="form-select" id="{{ form.appointment.id_for_label }}" required>
+                        {% for value, label in form.appointment.field.choices %}
+                            <option value="{{ value }}" {% if value == form.appointment.value %}selected{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
+                {% for error in form.appointment.errors %}
+                    <div class="form-error text-danger">{{error}}</div>
+                {% endfor %}      
             </div>
-
-
             <!-- Non field errors -->
             <div class="container mb-3">
                 {% for error in form.non_field_errors %}
                     <div class="form-error">{{error}}</div>
                 {% endfor %}
             </div>
-
             <!-- Submit Contact Form -->
             <div class="col-12">
                 <button class="btn btn-warning" type="submit">Submit form</button>
@@ -109,5 +116,5 @@
         </div>
     </form>
 </div>
-{% endif %}
+{% comment %} {% endif %} {% endcomment %}
 {% endblock %}

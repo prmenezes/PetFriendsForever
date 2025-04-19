@@ -6,7 +6,7 @@ from django.views.generic import ListView, DetailView, TemplateView
 from pets.models.person import Person
 from pets.models.appointment import Appointment
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-#from pets.forms import AppointmentForm
+from pets.forms import PersonForm
 
 from django.utils import timezone
 
@@ -16,21 +16,14 @@ from django.utils import timezone
 
 class PersonCreateView(CreateView):
     model = Person
-    fields = [
-        "first_name",
-        "last_name",
-        "phone",
-        "email",
-        "interested_species",
-        "first_time_owner",
-        "appointment"
-    ]
+    form_class = PersonForm 
 
     #PV: Delete this - get the form and use queryset to filter the appointment 
     def get_form(self, form_class = None):
         form = super().get_form(form_class)
         # Only show future appointment objects + appointment not booked by other person using related name
         form.fields["appointment"].queryset = Appointment.objects.filter(appointment_date__gt=timezone.now()).filter(people_at_this_appointment__isnull=True)
+        form.fields["appointment"].empty_label = "Select an appointment"
         return form
 
     # def get_context_data(self, **kwargs) -> dict[str, Any]:
@@ -58,6 +51,7 @@ class PersonCreateView(CreateView):
     #         return redirect(person.get_absolute_url())
     #     else:
     #         return self.form_invalid(form)
+
 
 
 class PersonListView(ListView):
