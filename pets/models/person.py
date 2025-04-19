@@ -27,7 +27,7 @@ class Person(models.Model):
                                 blank=True, 
                                 null=True
                                 )
-    appointment = models.ForeignKey("Appointment", 
+    appointment = models.OneToOneField("Appointment", 
                                     on_delete=models.SET_NULL, 
                                     related_name="people_at_this_appointment",
                                     blank=True, 

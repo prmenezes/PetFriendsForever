@@ -18,7 +18,7 @@ class SearchPetView(ListView):
         queryset = queryset.filter(adoption_status__iexact="adoptable")
 
         # Get the search name
-        search_query = self.request.GET.get('q')
+        search_query = self.request.GET.get('q').strip()
         if search_query:
             queryset = queryset.filter(name__iexact=search_query)
         
