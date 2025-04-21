@@ -17,6 +17,11 @@ class Pet(models.Model):
         "adopted": "Adopted"
     }
 
+    gender_choices = {
+        "female": "female",
+        "male": "male"
+    }
+
 
     
     # TODO: Auto generate random ids that are unique
@@ -25,7 +30,7 @@ class Pet(models.Model):
     name = models.CharField(max_length=100)
     # TODO: Use birthday - Date field to store the birthday and a method that returns the age as of today
     age = models.PositiveIntegerField()
-    gender = models.CharField(max_length=20)
+    gender = models.CharField(choices=gender_choices)
     breed = models.CharField(max_length=100)
     description = models.TextField(max_length=1200)
     adoption_status = models.CharField(choices=adoption_status_choices)
