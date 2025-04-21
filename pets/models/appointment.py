@@ -2,6 +2,8 @@ from django.utils.timezone import localtime
 from django.db import models
 from datetime import timedelta
 
+# TODO: Re-think the whole appointment system. Or at the least, have a calendar widget to select from instead of a drop down.
+
 class Appointment(models.Model):
 
     appointment_reason_choices = {
