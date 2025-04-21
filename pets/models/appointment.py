@@ -17,6 +17,7 @@ class Appointment(models.Model):
 
 
     def __str__(self):
+        # Return appointment date and time in 21-Apr-2025 11AM format
         if self.appointment_date:
             local_dt = localtime(self.appointment_date)
             return f"{local_dt.strftime('%d-%b-%Y %I%p')}"
