@@ -31,6 +31,5 @@ class HoursOfOperation(models.Model):
     def get_day_name(self):
         """Returns the day in full eg. Monday instead of Mon
         """
-        
         return self._DAYS_OF_THE_WEEK[self.day]
     
