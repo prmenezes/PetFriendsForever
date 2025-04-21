@@ -27,3 +27,73 @@ The application will use
 5. Run the app 
    python manage.py runserver
    
+# Roadmap (If I had all the time in the world to work on PFF)
+
+1.	 - [ ] Display All Adoptable Pets
+•	 - [ ] List only available Pets 
+•	 - [ ] Detail Information of the Pets
+•	 - [ ] Display one or more photos of the pets
+•	 - [ ] Admin support to manage pets i.e. add/delete/edit pet details
+2.	 - [ ] Filter Available Pets by Type
+•	 - [ ] List only pets type user is interested in 
+•	 - [ ] List pets by breed
+•	 - [ ] List pets by age 
+•	 - [ ] Sort pets by name
+•	 - [ ] Sort pets by age
+3.	 - [ ] Book an Appointment
+•	 - [ ] Create a user information form 
+i.	 - [ ] First Name, Last Name
+ii.	 - [ ] Phone Number
+iii.	 - [ ] Email Address
+iv.	 - [ ] Address
+v.	 - [ ] Interested species
+vi.	 - [ ] Interested pets (Select upto 3 pets)
+vii.	 - [ ] First time owner radio button 
+viii.	 - [ ] Select appointment slot
+ix.	 - [ ] Select appointment reason
+x.	 - [ ] ID Proof number
+xi.	 - [ ] ID Proof upload
+xii.	 - [ ] Submit form
+•	 - [ ] Reschedule an appointment (Needs #10 for implementation)
+•	 - [ ] Delete an appointment (Needs #10 for implementation)
+ - [ ] 
+4.	 - [ ] Validate user forms
+•	 - [ ] Strict validation for each of the above fields
+5.	 - [ ] Walk-In information
+6.	 - [ ] Adoption process information
+•	 - [ ] Info on the process
+•	 - [ ] Fees for each category
+•	 - [ ] Additional procedure fees
+7.	 - [ ] About us
+•	 - [ ] Info about the organization
+•	 - [ ] Contact information
+•	 - [ ] Hours of operation
+8.	 - [ ] Search functionality
+•	 - [ ] Search by name
+•	 - [ ] Search by breed
+9.	 - [ ] Templates – Styling pages using bootstrap
+•	 - [ ] Theme – Bright colors
+•	 - [ ] Home page – Welcome
+•	 - [ ] Navigation bar
+•	 - [ ] Links to Adoptable animals and filters
+•	 - [ ] Make pages responsive
+•	 - [ ] Paginate listings
+10.	 - [ ] User authentication and Authorization
+11.	 - [ ] Create Staff User and Permissions
+12.	 - [ ] Pet shop
+13.	 - [ ] Per services
+14.	 - [ ] Fees calculator – for Staff
+•	 - [ ] Add category to each pet to calculate fees easily
+15.	 - [ ] User verification 
+•	 - [ ] Check box if uploaded ID is verified in person – for Staff
+16.	 - [ ]  Wishlist a pet
+•	 - [ ] Logged in user should be able to wishlist pets
+•	 - [ ] Relogin should show the wishlist
+•	 - [ ] Share the list via social media
+17.	 - [ ] A custom staff dashboard
+18.	 - [ ] Pet age	
+•	 - [ ] Have birthday field to calculate age
+19.	 - [ ] Favicon for webpages
+
+
+  
