@@ -9,15 +9,26 @@ class Pet(models.Model):
         "Cats": "Cat",
         "Birds": "Bird"
     }
+
+    adoption_status_choices = {
+        "adoptable": "Adoptable",
+        "in_progress": "In Progress",
+        "approved": "Approved",
+        "adopted": "Adopted"
+    }
+
+
     
+    # TODO: Auto generate random ids that are unique
     id = models.IntegerField(primary_key=True)
     type = models.CharField(choices=pet_type_choices)
     name = models.CharField(max_length=100)
+    # TODO: Use birthday - Date field to store the birthday and a method that returns the age as of today
     age = models.PositiveIntegerField()
     gender = models.CharField(max_length=20)
     breed = models.CharField(max_length=100)
     description = models.TextField(max_length=1200)
-    adoption_status = models.CharField(max_length=100)
+    adoption_status = models.CharField(choices=adoption_status_choices)
     adopted_by = models.ForeignKey("Person", on_delete=models.SET_NULL, related_name="pets", blank=True, null=True)
     display_pic = models.ImageField(
         upload_to="pet_display_pics_upload",
