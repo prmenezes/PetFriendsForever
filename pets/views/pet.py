@@ -1,6 +1,8 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from django.contrib import messages
+
 from pets.models.pets import Pet
 from typing import Any
 
@@ -60,7 +62,7 @@ class PetCreateView(CreateView):
 
 class PetUpdateView(UpdateView):
     model = Pet
-    #template_name = ".html"
+    
     fields = [
         "name",
         "age",
@@ -70,11 +72,21 @@ class PetUpdateView(UpdateView):
         "adopted_by"
     ]
 
+    template_name_suffix = "_update_form"
+    success_url = reverse_lazy("pet_list")
+
 class PetDeleteView(DeleteView):
     model = Pet
-    #template_name = ".html"
+    template_name_suffix = "_confirm_delete"
     #When a pet is deleted, it'll redirect you to address list
     success_url = reverse_lazy("pet_list")
 
-
+    def post(self, request, *args, **kwargs):
+        messages.success(request, "Pet deleted successfully.")
+        return super().post(request, *args, **kwargs)
+    
+    # Post calls delete, but for some reason the re-direction is happening so fast that the message does not appear
+    # def delete(self, request, *args, **kwargs):
+    #     messages.success(request, "Pet deleted successfully.")
+    #     return super().delete(request, *args, **kwargs)
 
