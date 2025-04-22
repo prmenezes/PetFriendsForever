@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path
 
 from pets.views.home import HomeView
-from pets.views.pet import PetListView, PetDetailView
+from pets.views.pet import PetListView, PetDetailView, PetCreateView, PetUpdateView, PetDeleteView
 from pets.views.contact_form_success import ContactFormSuccessView
 from pets.views.how_to_adopt import HowtoAdoptView
 from pets.views.search_pets import SearchPetView
@@ -42,9 +42,16 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", HomeView.as_view(), name="home"),
+
+
     path("pets/", PetListView.as_view(), name="pet_list"),
     path("pets/<int:pk>/", PetDetailView.as_view(), name="pet_details"),
     path("pets/<str:pet_type>/", PetListView.as_view(), name="filtered_pet_list"),
+    path("pets/create", PetCreateView.as_view(), name="create_pet"),
+    # path("pets/edit", PetUpdateView.as_view(), name="edit_pet"),
+    # path("pets/delete", PetDeleteView.as_view(), name="delete_pet"),
+
+
     path("people/", PersonDetailView.as_view(), name="list_people"),
     path("people/<int:pk>/", PersonDetailView.as_view(), name="person_details"),
     path("people/create/", PersonCreateView.as_view(), name="create_person"),
@@ -56,8 +63,6 @@ urlpatterns = [
 
     path("search/<str:name>", SearchPetView.as_view(), name="search"),
     path("how_to_adopt/", FeesView.as_view(), name="how_to_adopt"),
-
-
 
 ]
 

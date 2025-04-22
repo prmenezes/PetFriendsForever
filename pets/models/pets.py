@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.urls import reverse
+
 import uuid
 
 class Pet(models.Model):
@@ -43,3 +45,7 @@ class Pet(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+    def get_absolute_url(self):
+        return reverse("pet_details", kwargs={"pk": self.pk})
+    
