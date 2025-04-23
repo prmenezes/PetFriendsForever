@@ -64,16 +64,21 @@ class PetUpdateView(UpdateView):
     model = Pet
     
     fields = [
+         "type",
         "name",
         "age",
+        "gender",
         "breed",
         "description",
         "adoption_status",
-        "adopted_by"
+        "adopted_by",
+        "display_pic"
     ]
 
     template_name_suffix = "_update_form"
-    success_url = reverse_lazy("pet_list")
+
+    #PV: staff user can see pet detail even if status changes to adopted, so get_abs_url is ok
+    #success_url = reverse_lazy("pet_list")
 
 class PetDeleteView(DeleteView):
     model = Pet
