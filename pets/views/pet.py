@@ -1,5 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from django.contrib import messages
 
@@ -43,7 +44,7 @@ class PetListView(ListView):
 class PetDetailView(DetailView):
     model = Pet
 
-class PetCreateView(CreateView):
+class PetCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Pet
     #template_name = "pet_form.html"
     fields = [
@@ -60,7 +61,12 @@ class PetCreateView(CreateView):
 
     ]
 
-class PetUpdateView(UpdateView):
+    def test_func(self):
+
+        return self.request.user.is_staff
+
+
+class PetUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Pet
     
     fields = [
@@ -80,7 +86,12 @@ class PetUpdateView(UpdateView):
     #PV: staff user can see pet detail even if status changes to adopted, so get_abs_url is ok
     #success_url = reverse_lazy("pet_list")
 
-class PetDeleteView(DeleteView):
+    def test_func(self):
+
+        return self.request.user.is_staff
+    
+
+class PetDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Pet
     template_name_suffix = "_confirm_delete"
     #When a pet is deleted, it'll redirect you to address list
@@ -94,4 +105,8 @@ class PetDeleteView(DeleteView):
     # def delete(self, request, *args, **kwargs):
     #     messages.success(request, "Pet deleted successfully.")
     #     return super().delete(request, *args, **kwargs)
+
+    def test_func(self):
+
+        return self.request.user.is_staff
 

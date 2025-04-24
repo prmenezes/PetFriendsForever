@@ -56,31 +56,48 @@
                     <a class="nav-link {% block contact-active %}{% endblock  %}" aria-current="page" href="{% url "contact_us" %}">Contact Us</a>
                   </li>
                   
-                  <!--PV: If user is staff -->
-                  {% if user.is_authenticated %}
-                  <li class="nav-item dropdown px-2">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      {{ user.username }}
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                      <li>
-                        <form method="post" action="{% url 'logout' %}" style="margin: 0; padding: 0;">
-                          {% csrf_token %}
-                          <button type="submit" class="dropdown-item">Logout</button>
-                        </form>
-                      </li>
-                    </ul>
-                  </li>
-                  {% endif %}
 
                 </ul>
+                
+
+                <!--Search form-->
                 <form class="d-flex" role="search" method="GET" action="{% url "search" "q" %}">
                   <input name="q" class="form-control me-2" type="search" placeholder="Search Pet by Name" aria-label="Search">
                   <button class="btn btn-warning" type="submit">Search</button>
                 </form>
+                
+                <!-- Staff User Dropdown -->
+                {% if user.is_authenticated %}
+                  <ul class="navbar-nav ms-auto px-2">
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ user.username }}
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <!-- Logout -->
+                        <li>
+                          <form method="post" action="{% url 'logout' %}" style="margin: 0; padding: 0;">
+                            {% csrf_token %}
+                            <button type="submit" class="dropdown-item">Logout</button>
+                          </form>
+                        </li>
+                        {% if user.is_staff %}
+                          <!-- Create Pet Option -->
+                          <li>
+                            <a class="dropdown-item" href="{% url "create_pet" %}">Add Pet</a>
+                          </li>
+                        {% endif %}
+
+
+                      </ul>
+                    </li>
+                  </ul>
+                {% endif %}
+
               </div>
             </div>
           </nav>
+
     
 
     </header>

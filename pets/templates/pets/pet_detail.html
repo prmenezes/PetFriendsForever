@@ -49,10 +49,20 @@
 
 </div>
 
-<!-- Fill form to book appointment and Walk-In buttons-->
-<div class="d-xl-flex w-50 align-items-center justify-content-between fs-4 text-center mx-5 mt-3 mb-5 gap-5">
+<!-- Buttons -->
+<div class="d-xl-flex align-items-center justify-content-between fs-4 text-center mx-5 mt-3 mb-5 gap-5">
+    <!-- Book appointment and Walk-In buttons-->
+
     {% include "fill_form_walk_in_buttons.html" %}
+
+    {% if user.is_authenticated and user.is_staff  %}
+        <!-- Edit Pet Info and Delete Pet buttons -->
+        {% include "edit_and_delete_buttons.html" %}
+    {% endif %}
 </div>
+
+
+
 
 
 {% endblock %}
