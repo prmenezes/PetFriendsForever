@@ -29,8 +29,8 @@
 
                         <!-- For unadoptable pets -->
                         {% if user.is_authenticated and user.is_staff %}
-                            <li class="list-group-item">Adoption Status: {{ pet.adoption_status }}</li>
-                            <li class="list-group-item">Adopted By: {{ pet.adopted_by }}</li>
+                            <li class="list-group-item">Adoption Status: {{ pet.get_adoption_status_display }}</li>
+                            <li class="list-group-item">Adopted By: {{ pet.adopted_by|title }}</li>
                         {% endif %}
                     </ul>
                 </div>

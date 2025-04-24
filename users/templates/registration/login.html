@@ -1,40 +1,62 @@
+<!-- Login Page -->
 {% extends "base.html" %}
 {% block title %} Login {% endblock title %}
 {% block login-active %} active {% endblock  %}
-
 {% block content %}
 
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+<div class="d-flex flex-column align-items-center mx-5 mt-5">
+    <!-- Sign In -->
+    <h3 class="display-7 text-success mb-3">Sign In</h3>
+    <form method="post" action="{% url 'login' %}">
+        {% comment %} <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> {% endcomment %}
+        {% csrf_token %}
+        <div class="d-flex flex-column align-items-center p-5 bg-light">
+            <!-- Username -->
+            <div class="mt-3">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                <input name="{{ form.username.html_name }}" type="text" class="form-control" id="{{ form.username.id_for_label }}" value="{{form.username.value|default_if_none:''}}">
+            </div>
+            <!-- Password -->
+            <div class="mt-3">
+                <label for="{{ form.password.id_for_label }}">Password</label>
+                <input name="{{ form.password.html_name }}" type="password" class="form-control" id="{{ form.password.id_for_label }}" value="{{ form.password.value|default_if_none:''}}">
+            </div> 
+            <div class="mt-4">
+                {% comment %} <input type="submit" value="login"> {% endcomment %}
+                <button class="btn btn-warning px-3" type="submit" value="login">Login</button>
+                <input type="hidden" name="next" value="{{ next }}">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="d-flex flex-column align-items-center mx-5">
+    <div>
+        {% if form.errors %}
+            <p class="form-error text-danger">Your username and password didn't match. Please try again.</p>
+        {% endif %}
 
-{% if next %}
-    {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-    {% else %}
-    <p>Please login to see this page.</p>
-    {% endif %}
-{% endif %}
+        {% if next %}
+            {% if user.is_authenticated %}
+                <p class="form-error text-danger">Your account doesn't have access to this page. To proceed,please login with an account that has access.</p>
+            {% else %}
+                <p class="form-error text-danger">Please login to see this page.</p>
+            {% endif %}
+        {% endif %}
+    </div>
 
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
+    <div class="mt-3">
+        <!-- Sign up link -->
+        <p class="lead">
+            <a href="{% url 'register_user' %}">Sign Up</a>
+        </p>
+    </div>
+</div>
 
-<input type="submit" value="login">
-<input type="hidden" name="next" value="{{ next }}">
-</form>
+    {% comment %} {# Assumes you set up the password_reset view in your URLconf #}
+    <p><a href="{% url 'password_reset' %}">Lost password?</a></p> {% endcomment %}
 
-{% comment %} {# Assumes you set up the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p> {% endcomment %}
+
 
 {% endblock %}
+
+
