@@ -16,7 +16,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from pets.views.home import HomeView
 from pets.views.pet import PetListView, PetDetailView, PetCreateView, PetUpdateView, PetDeleteView
@@ -66,6 +66,8 @@ urlpatterns = [
     path("search/<str:name>/", SearchPetView.as_view(), name="search"),
     path("how_to_adopt/", FeesView.as_view(), name="how_to_adopt"),
 
+
+    path('users/', include("users.urls"))
 ]
 
 # Serve media files during development
