@@ -126,9 +126,9 @@ class UnadoptablePetListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
         queryset = Pet.objects.exclude(adoption_status__iexact ='adoptable')
 
         #Get the pet_type if filtered by type and change the queryset to further filter only available 'pet_types'
-        pet_type = self.kwargs.get("pet_type")
-        if pet_type:
-            queryset = queryset.filter(type__iexact=pet_type)
+        # pet_type = self.kwargs.get("pet_type")
+        # if pet_type:
+        #     queryset = queryset.filter(type__iexact=pet_type)
         
         return queryset
     
@@ -136,9 +136,9 @@ class UnadoptablePetListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
         context = super().get_context_data(**kwargs)
 
         # If filtered by 'pet_type' list, add the pet type to context
-        pet_type = self.kwargs.get("pet_type")
-        if pet_type:
-            context["pet_type"] = pet_type
+        # pet_type = self.kwargs.get("pet_type")
+        # if pet_type:
+        #     context["pet_type"] = pet_type
      
         return context
     
