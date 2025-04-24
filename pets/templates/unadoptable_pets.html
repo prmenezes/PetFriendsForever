@@ -1,0 +1,40 @@
+<!-- Adoptable Pets: All Unadoptable Pets Page -->
+
+{% extends "base.html" %}
+{% block title %} Unadoptable Pets {% endblock %}
+{% block content %}
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  {% endfor %}
+{% endif %}
+
+<div class="d-sm-flex flex-column align-items-center mt-5 text-center">
+    {% if pet_type %}
+        <h1 class="fw-bold display-4 mb-5"> All Unavailable {{pet_type}}
+         </h1>
+
+    {% else %}
+        <h1 class="fw-bold display-4 mb-5"> All Unavailable Pets </h1>
+    {% endif %}
+
+
+    {% comment %} <!-- Buttons or Links to filter by type of Pets -->
+    {% include "pet_type_links.html" %} {% endcomment %}
+</div>
+<!-- List each pet in the pet_list -->
+{% include 'pet_list_item.html' %}
+
+{% endblock %}
+
+
+
+
+
+
+
+

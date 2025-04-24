@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from pets.views.home import HomeView
-from pets.views.pet import PetListView, PetDetailView, PetCreateView, PetUpdateView, PetDeleteView
+from pets.views.pet import PetListView, PetDetailView, PetCreateView, PetUpdateView, PetDeleteView, UnadoptablePetListView
 from pets.views.contact_form_success import ContactFormSuccessView
 from pets.views.how_to_adopt import HowtoAdoptView
 from pets.views.search_pets import SearchPetView
@@ -45,8 +45,11 @@ urlpatterns = [
 
 
     path("pets/", PetListView.as_view(), name="pet_list"),
+    path("pets/unadoptable_pets", UnadoptablePetListView.as_view(), name="unadoptable_pet_list"),
+
     path("pets/<int:pk>/", PetDetailView.as_view(), name="pet_details"),
     path("pets/filter/<str:pet_type>/", PetListView.as_view(), name="filtered_pet_list"),
+
     
     path("pets/create/", PetCreateView.as_view(), name="create_pet"),
     path("pets/edit/<int:pk>/", PetUpdateView.as_view(), name="edit_pet"),

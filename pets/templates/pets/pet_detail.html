@@ -20,12 +20,18 @@
                 <div class="align-self-start">
                     <img src="{{ pet.display_pic.url}}" alt="{{ pet.name}}" class="img-size">
                 </div>
-                <div class="ms-5 mt-4">
+                <div class="ms-5 mt-0">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Pet ID: {{ pet.id }}</li>
                         <li class="list-group-item">Age: {{ pet.age }}</li>
                         <li class="list-group-item">Sex: {{ pet.gender }}</li>
                         <li class="list-group-item">Breed: {{ pet.breed }}</li>
+
+                        <!-- For unadoptable pets -->
+                        {% if user.is_authenticated and user.is_staff %}
+                            <li class="list-group-item">Adoption Status: {{ pet.adoption_status }}</li>
+                            <li class="list-group-item">Adopted By: {{ pet.adopted_by }}</li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

@@ -74,6 +74,20 @@
                         {{ user.username }}
                       </a>
                       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+
+                        {% if user.is_staff %}
+                          <!-- Create Pet Option -->
+                          <li>
+                            <a class="dropdown-item" href="{% url "create_pet" %}">Add Pet</a>
+                          </li>
+
+                          <li>
+                            <a class="dropdown-item" href="{% url "unadoptable_pet_list" %}">Non-Adoptable Pets</a>
+                          </li>
+
+                        {% endif %}
+
+
                         <!-- Logout -->
                         <li>
                           <form method="post" action="{% url 'logout' %}" style="margin: 0; padding: 0;">
@@ -81,12 +95,7 @@
                             <button type="submit" class="dropdown-item">Logout</button>
                           </form>
                         </li>
-                        {% if user.is_staff %}
-                          <!-- Create Pet Option -->
-                          <li>
-                            <a class="dropdown-item" href="{% url "create_pet" %}">Add Pet</a>
-                          </li>
-                        {% endif %}
+                        
 
 
                       </ul>
