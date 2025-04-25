@@ -1,5 +1,21 @@
-<form method="post">{% csrf_token %}
-    <p>Are you sure you want to delete "{{ object }}"?</p>
-    {{ form }}
-    <input type="submit" value="Confirm">
-</form>
+<!-- Delete Pet Form For Staff User -->
+{% extends "base.html" %}
+{% block title %} Add Pet {% endblock %}
+{% block adoptable-pets-active %}active{% endblock  %}
+{% block content %}
+
+<div class="d-flex flex-column align-items-start mx-5 my-5">
+
+    <form method="post">
+        {% csrf_token %}
+        <p class="lead">Are you sure you want to delete "{{ object }}"?</p>
+        {{ form }}
+        <div class="my-4">
+            <!-- Add Pet button -->
+            <button class="btn btn-danger px-4" type="submit" value="Confirm">Confirm</button>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

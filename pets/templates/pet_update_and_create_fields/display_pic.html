@@ -1,4 +1,7 @@
 <!-- Display Pic1-->
-
+{% comment %} {% if form.instance.display_pic %}
+    <p>Current Picture:</p>
+    <img src="{{ form.instance.display_pic.url }}" alt="Current Picture" style="max-height: 200px;">
+{% endif %} {% endcomment %}
 <label class="required form-label" for="{{ form.display_pic.id_for_label }}">Display pic</label>
 <input type="file" class="form-control" name="{{ form.display_pic.html_name}}" accept="image/*" id="{{ form.display_pic.id_for_label }}" value="{{form.display_pic.value|default_if_none:''}}">

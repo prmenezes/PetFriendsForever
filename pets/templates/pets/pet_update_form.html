@@ -1,5 +1,45 @@
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update">
-</form>
+<!-- Edit Pet Form For Staff User -->
+{% extends "base.html" %}
+{% block title %} Add Pet {% endblock %}
+{% block adoptable-pets-active %}active{% endblock  %}
+{% block content %}
+
+<div class="d-flex flex-column align-items-start mx-5 my-5">
+    <!-- Add Pet form -->
+    <h2 class="display-7 text-success mb-3">Edit Pet Information</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="d-flex flex-column align-items-start p-5 bg-light gap-1">
+            
+            {% include "pet_update_and_create_fields/type.html" %}
+            <div class="mb-2"></div>
+            {% include "pet_update_and_create_fields/name.html" %}
+            <div class="mb-2"></div>
+            {% include "pet_update_and_create_fields/age.html" %}
+            <div class="mb-2"></div>
+            {% include "pet_update_and_create_fields/gender.html" %}
+            <div class="mb-2"></div>
+            {% include "pet_update_and_create_fields/breed.html" %}
+            <div class="mb-2"></div>
+            {% include "pet_update_and_create_fields/description.html" %}
+            <div class="mb-2"></div>
+            {% include "pet_update_and_create_fields/adoption_status.html" %}
+            <div class="mb-2"></div>
+            {% include "pet_update_and_create_fields/adopted_by.html" %}
+            <div class="mb-2"></div>
+            {% include "pet_update_and_create_fields/display_pic.html" %}
+            <div class="mb-2"></div>
+            
+            <div class="my-4">
+                <!-- Add Pet button -->
+                <button class="btn btn-warning px-4" type="submit" value="update">Save changes</button>
+            </div>
+
+
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+
