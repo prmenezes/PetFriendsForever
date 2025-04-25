@@ -1,0 +1,6 @@
+<!-- Pet Description -->
+<label for="{{ form.description.id_for_label }}" class="form-label"> Detailed description </label>
+<textarea name="{{ form.description.html_name }}" cols="40" rows="10" maxlength={{form.description.field.max_length}} class="vLargeTextField form-control" id="{{ form.description.id_for_label }}" >{{form.description.value|default_if_none:''}}</textarea>
+{% for error in form.description.errors %}
+    <div class="form-error text-danger">{{error}}</div>
+{% endfor %}

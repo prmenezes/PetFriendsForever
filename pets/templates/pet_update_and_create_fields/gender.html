@@ -1,0 +1,7 @@
+<!-- Pet Sex -->
+<label for="{{ form.gender.id_for_label }}" class="form-label">Sex</label>
+<select name="{{ form.gender.html_name }}" class="form-select" id="{{ form.gender.id_for_label }}">
+    {% for value, label in form.gender.field.choices %}
+        <option value="{{ value }}" {% if value == form.gender.value %}selected{% endif %}>{{ label }}</option>
+    {% endfor %}
+</select>

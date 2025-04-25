@@ -1,0 +1,10 @@
+
+<label for="{{ form.adopted_by.id_for_label }}" class="form-label">Adopted By</label>
+<select name="{{ form.adopted_by.html_name }}" class="form-select" id="{{ form.adopted_by.id_for_label }}">
+    {% for value, label in form.adopted_by.field.choices %}
+        <option value="{{ value }}" {% if value == form.adopted_by.value %}selected{% endif %}>{{ label }}</option>
+    {% endfor %}
+</select>
+{% for error in form.adopted_by.errors %}
+<div class="form-error text-danger">{{error}}</div>
+{% endfor %}

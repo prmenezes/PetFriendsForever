@@ -1,0 +1,7 @@
+<!-- Age -->
+<label for="{{ form.age.id_for_label }}" class="form-label">Age</label>
+<input name="{{ form.age.html_name }}" type="text" class="form-control" id="{{ form.age.id_for_label }}" value="{{form.age.value|default_if_none:''}}">
+
+{% for error in form.age.errors %}
+    <div class="form-error text-danger">{{error}}</div>
+{% endfor %}
