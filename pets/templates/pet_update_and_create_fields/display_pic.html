@@ -5,3 +5,6 @@
 {% endif %} {% endcomment %}
 <label class="required form-label" for="{{ form.display_pic.id_for_label }}">Display pic</label>
 <input type="file" class="form-control" name="{{ form.display_pic.html_name}}" accept="image/*" id="{{ form.display_pic.id_for_label }}" value="{{form.display_pic.value|default_if_none:''}}">
+{% for error in form.display_pic.errors %}
+    <div class="form-error text-danger">{{error}}</div>
+{% endfor %} 

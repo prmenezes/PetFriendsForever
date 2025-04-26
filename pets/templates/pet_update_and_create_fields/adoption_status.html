@@ -5,4 +5,7 @@
         <option value="{{ value }}" {% if value == form.adoption_status.value %}selected{% endif %}>{{ label }}</option>
     {% endfor %}
 </select>
+{% for error in form.adoption_status.errors %}
+    <div class="form-error text-danger">{{error}}</div>
+{% endfor %} 
 
