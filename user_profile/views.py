@@ -58,7 +58,7 @@ class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('profile_detail', kwargs={'pk': self.object.pk})        
 
-class UserProfileDeleteView(DeleteView):
+class UserProfileDeleteView(LoginRequiredMixin, DeleteView):
     model = UserProfile
     template_name = "user_profile/userprofile_confirm_delete.html"
 
@@ -68,14 +68,22 @@ class UserProfileDeleteView(DeleteView):
     def get_success_url(self):
         return reverse_lazy('home')
 
-class UserProfileDetailView(DetailView):
+class UserProfileDetailView(LoginRequiredMixin, DetailView):
     model = UserProfile
     template_name = "user_profile/userprofile_detail.html"
 
 
 # Appointment Views
 
-class AvailableAppointmentListView(ListView):
+# Mixin to make sure appointment views can only be accessed if user has created a profile. 
+# Since the appointment model has a booked by profile field
+class ProfileRequiredMixin:
+    def dispatch(self, request, *args, **kwargs):
+        if not hasattr(request.user, 'user_profile'):
+            return redirect('profile_create')  # Redirect to the profile creation page
+        return super().dispatch(request, *args, **kwargs)
+
+class AvailableAppointmentListView(LoginRequiredMixin, ProfileRequiredMixin, ListView):
     model = Appointment
     template_name = 'appointments/available_appointments_list.html'
     context_object_name = 'appointments'
@@ -87,12 +95,19 @@ class AvailableAppointmentListView(ListView):
     # def get_queryset(self):
     #     return Appointment.objects.all()
 
-class BookAppointmentView(FormView):
+class BookAppointmentView(LoginRequiredMixin, ProfileRequiredMixin, FormView):
 
     form_class = AppointmentForm
     template_name = 'appointments/book_appointment.html'
 
     def dispatch(self, request, *args, **kwargs):
+
+        # Call the ProfileRequiredMixin's dispatch explicitly to check if the user has a profile 
+        # so that two dispatches don't cause a conflict
+        response = ProfileRequiredMixin.dispatch(self, request, *args, **kwargs)
+        if response:
+            return response
+        
         self.appointment = get_object_or_404(Appointment, pk=kwargs['pk'], is_booked=False)
         return super().dispatch(request, *args, **kwargs)
 
@@ -105,14 +120,14 @@ class BookAppointmentView(FormView):
 
         return redirect('user_appointments')
     
-class UserAppointmentListView(ListView):
+class UserAppointmentListView(LoginRequiredMixin, ProfileRequiredMixin, ListView):
     template_name = 'appointments/user_appointment_list.html'
     context_object_name = 'appointments'
 
     def get_queryset(self):
         return Appointment.objects.filter(booked_by=self.request.user.user_profile).order_by('appointment_date')
     
-class AppointmentUpdateView(UpdateView):
+class AppointmentUpdateView(LoginRequiredMixin, ProfileRequiredMixin, UpdateView):
     model = Appointment
     form_class = AppointmentForm
     template_name = 'appointments/book_appointment.html'
@@ -124,7 +139,7 @@ class AppointmentUpdateView(UpdateView):
         return reverse_lazy('user_appointments')
     
 
-class CancelAppointmentView(View):
+class CancelAppointmentView(LoginRequiredMixin, ProfileRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         # Get the appointment by ID and make sure it is not already booked
         appointment = get_object_or_404(Appointment, pk=kwargs['pk'], booked_by=request.user.user_profile)
