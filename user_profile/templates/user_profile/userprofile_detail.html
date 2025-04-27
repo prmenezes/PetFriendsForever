@@ -1,8 +1,32 @@
-<h1>Profile Details</h1>
-<p>Name: {{ object.first_name }} {{ object.last_name }}</p>
-<p>Email: {{ object.email }}</p>
-<p>Phone: {{ object.phone }}</p>
-<p>Interested Species: {{ object.interested_species }}</p>
-<p>First-Time Owner: {{ object.first_time_owner }}</p>
-<a href="{% url 'profile_update' object.pk %}">Edit</a>
-<a href="{% url 'profile_delete' object.pk %}">Delete</a>
+<!-- Create User Profile -->
+{% extends "base.html" %}
+{% block title %} User Profile Details {% endblock %}
+{% block login-active %}active{% endblock  %}
+{% block content %}
+
+<div class="d-flex flex-column align-items-start mx-5 my-5">
+    <div class="row m-5">
+        <div class="col-12 gx-4 mb-4">
+            <h1 class="display-7 text-success ms-2 mb-4"> Profile Details </h1>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item lead">Name: {{ object.first_name }} {{ object.last_name }}</li>
+                <li class="list-group-item lead">Email: {{ object.email }}</li>
+                <li class="list-group-item lead">Phone: {{ object.phone }}</li>
+                <li class="list-group-item lead">Interested Species: {{ object.interested_species| title }}</li>
+                <li class="list-group-item lead">First Time Owner:
+                    <input class="form-check-input border-dark mx-2" type="checkbox" disabled {% if object.first_time_owner %}checked{% endif %}>
+                </li>
+                
+            </ul>
+        </div>
+        <div class="mt-3 mx-3">
+            <p class="lead ">
+                <a href="{% url 'profile_update' object.pk %}" class="me-5 text-warning fw-bold" >Edit Profile</a>
+                <a href="{% url 'profile_delete' object.pk %}"class="text-danger fw-bold">Delete Profile</a>
+            </p>
+        </div>
+    </div>
+   
+</div>
+
+{% endblock %}

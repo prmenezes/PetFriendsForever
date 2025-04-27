@@ -1,0 +1,6 @@
+<!-- Phone -->
+<label for="{{ form.phone.id_for_label }}" class="form-label"> Phone </label>
+<input name="{{ form.phone.html_name }}" type="text" class="form-control" id="{{ form.phone.id_for_label }}" value="{{form.phone.value|default_if_none:''}}" placeholder="Example: 555 555 5555">
+{% for error in form.phone.errors %}
+    <div class="form-error text-danger">{{error}}</div>
+{% endfor %}

@@ -1,0 +1,11 @@
+<!-- Interested Species -->
+<label for="{{ form.interested_species.id_for_label }}" class="form-label">Interested Species</label>
+<select name="{{ form.interested_species.html_name }}" class="form-select" id="{{ form.interested_species.id_for_label }}">
+    {% for value, label in form.interested_species.field.choices %}
+        <option value="{{ value }}" {% if value == form.interested_species.value %}selected{% endif %}>{{ label }}</option>
+    {% endfor %}
+</select>
+
+{% for error in form.interested_species.errors %}
+    <div class="form-error text-danger">{{error}}</div>
+{% endfor %} 

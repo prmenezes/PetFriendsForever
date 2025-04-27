@@ -1,0 +1,6 @@
+<!-- First Name -->
+<label for="{{ form.first_name.id_for_label }}" class="form-label"> First Name </label>
+<input name="{{ form.first_name.html_name }}" type="text" class="form-control" id="{{ form.first_name.id_for_label }}" value="{{form.first_name.value|default_if_none:''}}">
+{% for error in form.first_name.errors %}
+    <div class="form-error text-danger">{{error}}</div>
+{% endfor %}

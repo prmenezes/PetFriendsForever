@@ -1,6 +1,65 @@
-<h1>Create/Update Profile</h1>
+<!-- Update User Profile -->
+{% extends "base.html" %}
+{% block title %} Edit User Profile {% endblock %}
+{% block login-active %}active{% endblock  %}
+{% block content %}
+
+<div class="d-flex flex-column align-items-center mx-5 my-5">
+<!-- Add User Profile Info form -->
+
+<h1 class="display-7 text-success mb-3">Update Profile</h1>
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
+    <div class="d-flex flex-column align-items-center p-5 bg-light gap-1">
+        <!-- Name fields -->
+        <div class="row w-100">
+            <div class="col-md-6">
+                {% include "userprofile_create_update_fields/first_name.html" %}
+            </div>
+            <div class="col-md-6">
+                {% include "userprofile_create_update_fields/last_name.html" %}
+            </div>
+        </div>
+        <div class="mb-3"></div>
+        
+        <div class="row w-100">
+            <div class="col-md-6 col-sm-8">
+                {% include "userprofile_create_update_fields/phone.html" %}
+            </div>
+        </div>
+        <div class="mb-2"></div>
+        
+        <div class="row w-100">
+            <div class="col-md-12 col-sm-8">
+        {% include "userprofile_create_update_fields/email.html" %}
+            </div>
+        </div>
+        <div class="mb-2"></div>
+
+        <div class="row w-100">
+            <div class="col-md-6 col-sm-8">    
+        {% include "userprofile_create_update_fields/interested_species.html" %}
+            </div>
+        </div>
+        <div class="mb-2"></div>
+
+        <div class="row w-100">
+            <div class="col-md-12 col-sm-8">    
+        {% include "userprofile_create_update_fields/first_time_owner.html" %}
+            </div>
+        </div>
+        <div class="mb-2"></div>
+            
+    <div class="my-4">
+        <!-- Save Profile button -->
+        <button class="btn btn-warning px-4" type="submit" value="save">Save Profile</button>
+    </div>
+    
 </form>
+
+
+</div>
+</form>
+</div>
+
+{% endblock %}
