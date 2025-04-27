@@ -1,4 +1,5 @@
 from django.db import models
+from user_profile.models import UserProfile
 
 from django.urls import reverse
 
@@ -36,7 +37,7 @@ class Pet(models.Model):
     breed = models.CharField(max_length=100)
     description = models.TextField(max_length=1200)
     adoption_status = models.CharField(choices=adoption_status_choices)
-    adopted_by = models.ForeignKey("Person", on_delete=models.SET_NULL, related_name="pets", blank=True, null=True)
+    adopted_by = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, related_name="pets", blank=True, null=True)
     display_pic = models.ImageField(
         upload_to="pet_display_pics_upload",
         default="pet_pics_upload/photo_coming_soon.png", 

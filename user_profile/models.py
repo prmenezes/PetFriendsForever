@@ -3,7 +3,6 @@ from django.db import models
 from django.urls import reverse
 
 from django.contrib.auth.models import User
-from pets.models import Address, IDProof
 
 class UserProfile(models.Model):
 
@@ -24,22 +23,8 @@ class UserProfile(models.Model):
     interested_species = models.CharField(choices=species_choices, blank=True, null=True)
     first_time_owner = models.BooleanField(help_text="Please check this box if this will be your first pet")
 
-    address = models.ForeignKey(Address, 
-                                on_delete=models.SET_NULL, 
-                                related_name="persons_at_this_address", 
-                                blank=True, 
-                                null=True
-                                )
-
-    id_proof = models.OneToOneField(IDProof, 
-                                    on_delete=models.SET_NULL, 
-                                    related_name="id_of_this_user",
-                                    null=True
-                                    )
-    
-
     def __str__(self):
-        return f"Profile for {self.user}: {self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name} ({self.user})"
     
     def get_absolute_url(self):
         return reverse('profile_detail', kwargs={'pk': self.object.pk})

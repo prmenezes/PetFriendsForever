@@ -20,24 +20,13 @@ class Person(models.Model):
     email = models.EmailField(max_length=254)
     interested_species = models.CharField(choices=species_choices, blank=True, null=True)
     first_time_owner = models.BooleanField(help_text="Please check this box if this will be your first pet")
-
-    address = models.ForeignKey("Address", 
-                                on_delete=models.SET_NULL, 
-                                related_name="people_at_this_address", 
-                                blank=True, 
-                                null=True
-                                )
     appointment = models.OneToOneField("Appointment", 
                                     on_delete=models.SET_NULL, 
                                     related_name="people_at_this_appointment",
                                     blank=True, 
                                     null=True
                                     )
-    id_proof = models.OneToOneField("IDProof", 
-                                    on_delete=models.SET_NULL, 
-                                    related_name="id_of_person",
-                                    null=True
-                                    )
+
     
 
     def __str__(self):
