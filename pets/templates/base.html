@@ -107,6 +107,10 @@
                             <li>
                               <a class="dropdown-item" href="{% url 'profile_detail' user.user_profile.pk %}">My Profile</a>
                             </li>
+                            <li>
+                              <a class="dropdown-item" href="{% url 'user_appointments' %}">My Appointments</a>
+                            </li>
+                            
                           {% else %}
                             <li>
                               <a class="dropdown-item" href="{% url 'profile_create' %}">Create Profile</a>
