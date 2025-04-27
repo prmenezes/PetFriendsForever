@@ -1,5 +1,6 @@
 from django import forms
 from user_profile.models import UserProfile
+from pets.models import Appointment
 
 class UserProfileForm(forms.ModelForm):
 
@@ -12,4 +13,13 @@ class UserProfileForm(forms.ModelForm):
     #     self.fields["interested_species"].required = False
 
 
-    
+class AppointmentForm(forms.ModelForm):
+
+    class Meta:
+        model = Appointment    
+        fields = ["reason"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['reason'].label = "Reason for Appointment"
+
