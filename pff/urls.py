@@ -70,7 +70,9 @@ urlpatterns = [
     path("how_to_adopt/", FeesView.as_view(), name="how_to_adopt"),
 
 
-    path('users/', include("users.urls"))
+    path('users/', include("users.urls")),
+    path('user_profile/', include("user_profile.urls"))
+
 ]
 
 # Serve media files during development

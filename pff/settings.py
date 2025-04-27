@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'fees',
     'contact_us',
     'users',
+    'user_profile',
     
 ]
 

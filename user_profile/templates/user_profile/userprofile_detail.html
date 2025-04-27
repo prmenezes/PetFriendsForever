@@ -1,0 +1,8 @@
+<h1>Profile Details</h1>
+<p>Name: {{ object.first_name }} {{ object.last_name }}</p>
+<p>Email: {{ object.email }}</p>
+<p>Phone: {{ object.phone }}</p>
+<p>Interested Species: {{ object.interested_species }}</p>
+<p>First-Time Owner: {{ object.first_time_owner }}</p>
+<a href="{% url 'profile_update' object.pk %}">Edit</a>
+<a href="{% url 'profile_delete' object.pk %}">Delete</a>
