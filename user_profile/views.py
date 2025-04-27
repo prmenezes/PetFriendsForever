@@ -83,7 +83,7 @@ class ProfileRequiredMixin:
             return redirect('profile_create')  # Redirect to the profile creation page
         return super().dispatch(request, *args, **kwargs)
 
-class AvailableAppointmentListView(LoginRequiredMixin, ProfileRequiredMixin, ListView):
+class AvailableAppointmentListView(ListView):
     model = Appointment
     template_name = 'appointments/available_appointments_list.html'
     context_object_name = 'appointments'
@@ -100,25 +100,30 @@ class BookAppointmentView(LoginRequiredMixin, ProfileRequiredMixin, FormView):
     form_class = AppointmentForm
     template_name = 'appointments/book_appointment.html'
 
-    def dispatch(self, request, *args, **kwargs):
-
-        # Call the ProfileRequiredMixin's dispatch explicitly to check if the user has a profile 
-        # so that two dispatches don't cause a conflict
-        response = ProfileRequiredMixin.dispatch(self, request, *args, **kwargs)
-        if response:
-            return response
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         
-        self.appointment = get_object_or_404(Appointment, pk=kwargs['pk'], is_booked=False)
-        return super().dispatch(request, *args, **kwargs)
+        # Get the appointment based on the pk provided in the URL
+        appointment_id = self.kwargs['pk']
+        appointment = get_object_or_404(Appointment, pk=appointment_id, is_booked=False)
+        
+        # Pass the appointment to the context
+        context['appointment'] = appointment
+        return context
+    
 
     def form_valid(self, form):
-        appointment = self.appointment
+        appointment = self.get_context_data()['appointment']
         appointment.reason = form.cleaned_data['reason']
         appointment.is_booked = True
         appointment.booked_by = self.request.user.user_profile
         appointment.save()
 
         return redirect('user_appointments')
+    
+    def get_success_url(self):
+        # You can redirect the user to the page displaying all appointments for them
+        return reverse_lazy('user_appointments')
     
 class UserAppointmentListView(LoginRequiredMixin, ProfileRequiredMixin, ListView):
     template_name = 'appointments/user_appointment_list.html'
