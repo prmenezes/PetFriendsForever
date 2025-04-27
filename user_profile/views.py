@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.views import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView, ListView
 from user_profile.models import UserProfile
@@ -79,11 +80,12 @@ class AvailableAppointmentListView(ListView):
     template_name = 'appointments/available_appointments_list.html'
     context_object_name = 'appointments'
 
-    # def get_queryset(self):
-    #     queryset =  super().get_queryset().filter(appointment_date__gte=timezone.now(), is_booked=False).order_by('appointment_date')
-
     def get_queryset(self):
-        return Appointment.objects.all()
+        queryset =  super().get_queryset().filter(appointment_date__gte=timezone.now(), is_booked=False).order_by('appointment_date')
+        return queryset
+
+    # def get_queryset(self):
+    #     return Appointment.objects.all()
 
 class BookAppointmentView(FormView):
 
@@ -122,23 +124,19 @@ class AppointmentUpdateView(UpdateView):
         return reverse_lazy('user_appointments')
     
 
-class CancelAppointmentView(DeleteView):
-    model = Appointment
-    template_name = 'appointments/confirm_delete.html'
+class CancelAppointmentView(View):
+    def get(self, request, *args, **kwargs):
+        # Get the appointment by ID and make sure it is not already booked
+        appointment = get_object_or_404(Appointment, pk=kwargs['pk'], booked_by=request.user.user_profile)
 
-    def get_queryset(self):
-        return Appointment.objects.filter(booked_by=self.request.user.user_profile)
+        # Cancel the appointment by setting the necessary fields
+        appointment.is_booked = False
+        appointment.booked_by = None
+        appointment.reason = "other"
+        appointment.save()
 
-    def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        self.object.is_booked = False
-        self.object.booked_by = None
-        self.object.reason = "other"
-        self.object.save()
+        # Redirect to the list of user appointments after cancellation
         return redirect('user_appointments')
-    
-    def get_success_url(self):
-        return reverse_lazy('user_appointments')
     
 
 

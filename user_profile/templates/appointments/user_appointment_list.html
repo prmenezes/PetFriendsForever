@@ -3,7 +3,8 @@
 {% if appointments %}
   <ul>
     {% for appt in appointments %}
-      <li>{{ appt }} —
+      <li>{{appt}} - {{ appt.get_reason_display }} —
+        
         <a href="{% url 'edit_appointment' appt.pk %}">Edit</a> |
         <a href="{% url 'cancel_appointment' appt.pk %}">Cancel</a>
       </li>
