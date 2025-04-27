@@ -99,10 +99,16 @@
 
                         {% endif %}
                         
-                        <!-- Show user's profile -->
-                        <li>
-                          <a class="dropdown-item" href="{% url "profile_detail" user.user_profile.pk %}">My Profile</a>
-                        </li>
+                        <!-- Show user's profile if exists or take them to Create profile -->
+                        {% if user.user_profile %}
+                          <li>
+                            <a class="dropdown-item" href="{% url 'profile_detail' user.user_profile.pk %}">My Profile</a>
+                          </li>
+                        {% else %}
+                          <li>
+                            <a class="dropdown-item" href="{% url 'profile_create' %}">Create Profile</a>
+                          </li>
+                        {% endif %}
 
                         <!-- Logout -->
                         <li>
