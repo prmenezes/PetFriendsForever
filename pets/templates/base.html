@@ -98,7 +98,11 @@
                           </li>
 
                         {% endif %}
-
+                        
+                        <!-- Show user's profile -->
+                        <li>
+                          <a class="dropdown-item" href="{% url "profile_detail" user.user_profile.pk %}">My Profile</a>
+                        </li>
 
                         <!-- Logout -->
                         <li>
