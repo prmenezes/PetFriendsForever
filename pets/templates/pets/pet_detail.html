@@ -25,7 +25,7 @@
                         <li class="list-group-item">Pet ID: {{ pet.id }}</li>
                         <li class="list-group-item">Age: {{ pet.age }}</li>
                         <li class="list-group-item">Sex: {{ pet.gender| title }}</li>
-                        <li class="list-group-item">Breed: {{ pet.breed }}</li>
+                        <li class="list-group-item">Breed: {{ pet.breed| title }}</li>
 
                         <!-- For unadoptable pets -->
                         {% if user.is_authenticated and user.is_staff %}
