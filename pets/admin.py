@@ -21,7 +21,7 @@ class AddressAdmin(admin.ModelAdmin):
     pass
 
 class AppointmentAdmin(admin.ModelAdmin):
-    pass
+    list_display=["appointment_date", "reason", "is_booked", "booked_by"]
 
 class IDProofAdmin(admin.ModelAdmin):
     pass

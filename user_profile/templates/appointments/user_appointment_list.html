@@ -1,15 +1,32 @@
-<h2>My Appointments</h2>
+<!-- User Appointments -->
+{% extends "base.html" %}
+{% block title %}My Appointments {% endblock %}
+{% block login-active %}active{% endblock  %}
+{% block content %}
 
-{% if appointments %}
-  <ul>
-    {% for appt in appointments %}
-      <li>{{appt}} - {{ appt.get_reason_display }} —
+
+<div class="d-flex flex-column align-items-start">
+  <div class="row m-5">
+    <div class="col-12 gx-4 mb-4">
+      <h1 class="display-7 text-success ms-2 mb-4"> My Appointments </h1>
+      {% if user.is_authenticated %}
+        <ul class="list-group list-group-flush">  
+          {% for appt in appointments %}
+            <li class="list-group-item lead"> {{appt}} - {{ appt.get_reason_display }} —
         
-        <a href="{% url 'edit_appointment' appt.pk %}">Edit</a> |
-        <a href="{% url 'cancel_appointment' appt.pk %}">Cancel</a>
-      </li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p>You have not booked an appointment yet.</p>
-{% endif %}
+              <a href="{% url 'edit_appointment' appt.pk %}">Edit</a> |
+              <a href="{% url 'cancel_appointment' appt.pk %}">Cancel</a>
+            </li>
+            
+          {% empty %}
+          <p class="lead ms-1">You have no booked appointments.</p>
+          {% endfor %}
+        </ul> 
+      {% endif %}
+    </div>
+  </div>
+</div>  
+
+
+
+{% endblock %}
