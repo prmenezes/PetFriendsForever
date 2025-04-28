@@ -1,4 +1,6 @@
-<input type="checkbox" name="{{ form.first_time_owner.html_name }}" id="{{ form.first_time_owner.id_for_label }}">
-    {% if form.first_time_owner.value == 'on' %}checked{% endif %}
+<input type="checkbox" 
+name="{{ form.first_time_owner.html_name }}" 
+id="{{ form.first_time_owner.id_for_label }}"
+{% if form.first_time_owner.value %}checked{% endif %}>
     <label class="vCheckboxLabel" for="{{ form.first_time_owner.id_for_label }}">First time pet owner</label>
     <div id="first_time_owner_help" class="form-text">{{ form.first_time_owner.help_text }}</div>

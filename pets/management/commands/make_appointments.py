@@ -8,14 +8,14 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         start_hour = 11
         end_hour = 16 
-        num_days = 7
+        num_days = 5
 
         now = datetime.now()
         today = now.date()
 
         appointments_created = []
 
-        # for tomorrow to next 7 days
+        # for tomorrow to next 5 days
         for day in range(1, num_days + 1):
             appointment_date = today + timedelta(days=day)
 
