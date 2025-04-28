@@ -19,6 +19,9 @@
           {% endfor %}
         </ul> 
       {% else %}
+        <p class="lead ms-1 ">Please <a href="{% url "login" %}" class="text-warning fw-bold"> login </a>to book appointments </p>
+        <div class="mb-3"></div>
+
         <ul class="list-group list-group-flush">
           {% for appt in appointments %}
           
@@ -28,8 +31,6 @@
             <p class="lead ms-1">No available appointments at this time.</p>
           {% endfor %}
         </ul>
-        <div class="mt-3"></div>
-        <p class="lead ms-1 text-warning fw-bold">Please login to book appointments </p>
       {% endif %} 
     </div>
   </div>
