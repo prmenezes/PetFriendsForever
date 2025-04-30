@@ -30,71 +30,71 @@ The application will use
    
 # Roadmap (If I had all the time in the world to work on PFF)
 
-1.	 - [x] Display All Adoptable Pets
-•	 - [x] List only available Pets 
-•	 - [x] Detail Information of the Pets
-•	 - [x] Display one or more photos of the pets
-•	 - [x] Admin support to manage pets i.e. add/delete/edit pet details
-2.	 - [x] Filter Available Pets by Type
-•	 - [x] List only pets type user is interested in 
-•	 - [ ] List pets by breed
-•	 - [ ] List pets by age 
-•	 - [ ] Sort pets by name
-•	 - [ ] Sort pets by age
-3.	 - [x] Book an Appointment
-•	 - [x] Create a user information form 
-i.	 - [x] First Name, Last Name
-ii.	 - [x] Phone Number
-iii.- [x] Email Address
-iv.	 - [ ] Address
-v.	 - [x] Interested species
-vi.	 - [ ] Interested pets (Select upto 3 pets)
-vii.	 - [x] First time owner radio button 
-viii.	 - [x] Select appointment slot
-ix.	 - [ ] Select appointment reason
-x.	 - [ ] ID Proof number
-xi.	 - [ ] ID Proof upload
-xii.	 - [x] Submit form
-•	 - [ ] Reschedule an appointment (Needs #10 for implementation)
-•	 - [ ] Delete an appointment (Needs #10 for implementation
-4.	 - [ ] Validate user forms
-•	 - [ ] Strict validation for each of the above fields
-5.	 - [x] Walk-In information
-6.	 - [x] Adoption process information
-•	 - [x] Info on the process
-•	 - [x] Fees for each category
-•	 - [x] Additional procedure fees
-7.	 - [] About us
-•	 - [ ] Info about the organization
-•	 - [x] Contact information
-•	 - [x] Hours of operation
-8.	 - [x] Search functionality
-•	 - [x] Search by name
-•	 - [ ] Search by breed
-9.	 - [x] Templates – Styling pages using bootstrap
-•	 - [x] Theme – Bright colors
-•	 - [x] Home page – Welcome
-•	 - [x] Navigation bar
-•	 - [x] Links to Adoptable animals and filters
-•	 - [x] Make pages responsive
-•	 - [ ] Paginate listings
-10.	 - [ ] User authentication and Authorization
-11.	 - [ ] Create Staff User and Permissions
-12.	 - [ ] Pet shop
-13.	 - [ ] Pet services
-14.	 - [ ] Fees calculator – for Staff
-•	 - [ ] Add category to each pet to calculate fees easily
-15.	 - [ ] User verification 
-•	 - [ ] Check box if uploaded ID is verified in person – for Staff
-16.	 - [ ]  Wishlist a pet
-•	 - [ ] Logged in user should be able to wishlist pets
-•	 - [ ] Relogin should show the wishlist
-•	 - [ ] Share the list via social media
-17.	 - [ ] A custom staff dashboard
-18.	 - [ ] Pet age	
-•	 - [ ] Have birthday field to calculate age
-19.	 - [ ] Favicon for webpages
-20.    - [ ] What appointments do we have today page - For Staff users only
+1.	 - [x] Display All Adoptable Pets  
+•	 - [x] List only available Pets   
+•	 - [x] Detail Information of the Pets  
+•	 - [x] Display one or more photos of the pets  
+•	 - [x] Admin support to manage pets i.e. add/delete/edit pet details  
+2.	 - [x] Filter Available Pets by Type  
+•	 - [x] List only pets type user is interested in   
+•	 - [ ] List pets by breed  
+•	 - [ ] List pets by age   
+•	 - [ ] Sort pets by name  
+•	 - [ ] Sort pets by age  
+3.	 - [x] Book an Appointment  
+•	 - [x] Create a user information form   
+i.	 - [x] First Name, Last Name  
+ii.	 - [x] Phone Number  
+iii.- [x] Email Address  
+iv.	 - [ ] Address  
+v.	 - [x] Interested species  
+vi.	 - [ ] Interested pets (Select upto 3 pets)  
+vii.	 - [x] First time owner radio button   
+viii.	 - [x] Select appointment slot  
+ix.	 - [ ] Select appointment reason  
+x.	 - [ ] ID Proof number  
+xi.	 - [ ] ID Proof upload  
+xii.	 - [x] Submit form  
+•	 - [ ] Reschedule an appointment (Needs #10 for implementation)  
+•	 - [ ] Delete an appointment (Needs #10 for implementation)  
+4.	 - [ ] Validate user forms  
+•	 - [ ] Strict validation for each of the above fields  
+5.	 - [x] Walk-In information  
+6.	 - [x] Adoption process information  
+•	 - [x] Info on the process  
+•	 - [x] Fees for each category  
+•	 - [x] Additional procedure fees  
+7.	 - [] About us  
+•	 - [ ] Info about the organization  
+•	 - [x] Contact information  
+•	 - [x] Hours of operation  
+8.	 - [x] Search functionality  
+•	 - [x] Search by name  
+•	 - [ ] Search by breed  
+9.	 - [x] Templates – Styling pages using bootstrap  
+•	 - [x] Theme – Bright colors  
+•	 - [x] Home page – Welcome  
+•	 - [x] Navigation bar  
+•	 - [x] Links to Adoptable animals and filters  
+•	 - [x] Make pages responsive  
+•	 - [ ] Paginate listings  
+10.	 - [ ] User authentication and Authorization  
+11.	 - [ ] Create Staff User and Permissions  
+12.	 - [ ] Pet shop  
+13.	 - [ ] Pet services  
+14.	 - [ ] Fees calculator – for Staff  
+•	 - [ ] Add category to each pet to calculate fees easily  
+15.	 - [ ] User verification   
+•	 - [ ] Check box if uploaded ID is verified in person – for Staff  
+16.	 - [ ]  Wishlist a pet  
+•	 - [ ] Logged in user should be able to wishlist pets  
+•	 - [ ] Relogin should show the wishlist  
+•	 - [ ] Share the list via social media  
+17.	 - [ ] A custom staff dashboard  
+18.	 - [ ] Pet age	  
+•	 - [ ] Have birthday field to calculate age  
+19.	 - [ ] Favicon for webpages  
+20.    - [ ] What appointments do we have today page - For Staff users only  
 
 
   
